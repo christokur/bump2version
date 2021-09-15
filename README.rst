@@ -1,14 +1,14 @@
 .. start-badges
 
-|travis| |requires| |wheel| |supported-versions| |supported-implementations|
+|github| |requires| |wheel| |supported-versions| |supported-implementations|
 
-.. |travis| image:: https://travis-ci.org/andrivet/advbumpversion.svg?branch=master
-    :alt: Travis-CI Build Status
-    :target: https://travis-ci.org/andrivet/advbumpversion
+.. |github| image:: https://github.com/andrivet/ADVbumpversion/workflows/CI/badge.svg
+     :target: https://github.com/andrivet/ADVbumpversion/actions
+     :alt: GitHub Actions
 
-.. |requires| image:: https://requires.io/github/andrivet/advbumpversion/requirements.svg?branch=master
-    :target: https://requires.io/github/andrivet/advbumpversion/requirements/?branch=master
-    :alt: Requirements Status
+.. |requires| image:: https://requires.io/github/andrivet/ADVbumpversion/requirements.svg?branch=master
+     :target: https://requires.io/github/andrivet/ADVbumpversion/requirements/?branch=master
+     :alt: Requirements Status
 
 .. |wheel| image:: https://img.shields.io/pypi/wheel/advbumpversion.svg?style=flat
     :alt: PyPI Wheel
