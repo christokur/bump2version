@@ -1,10 +1,15 @@
 import pytest
 
-from bumpversion.version_part import *
+from bumpversion.version_part import (
+    ConfiguredVersionPartConfiguration,
+    NumericVersionPartConfiguration,
+    VersionPart,
+)
 
 
 @pytest.fixture(params=[None, (('0', '1', '2'),), (('0', '3'),)])
 def confvpc(request):
+    """Return a three-part and a two-part version part configuration."""
     if request.param is None:
         return NumericVersionPartConfiguration()
     else:
@@ -40,13 +45,11 @@ def test_version_part_check_optional_true(confvpc):
 
 
 def test_version_part_format(confvpc):
-    assert "{}".format(
-        VersionPart(confvpc.first_value, confvpc)) == confvpc.first_value
+    assert "{}".format(VersionPart(confvpc.first_value, confvpc)) == confvpc.first_value
 
 
 def test_version_part_equality(confvpc):
-    assert VersionPart(confvpc.first_value, confvpc) == VersionPart(
-        confvpc.first_value, confvpc)
+    assert VersionPart(confvpc.first_value, confvpc) == VersionPart(confvpc.first_value, confvpc)
 
 
 def test_version_part_null(confvpc):

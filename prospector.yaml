@@ -1,0 +1,27 @@
+output-format: pylint
+
+strictness: veryhigh
+test-warnings: true
+doc-warnings: false
+max-line-length: 120
+
+#inherits:
+#  - my/other/profile.yml
+
+ignore-paths:
+  - docs/
+  - debug
+  - environment/legacy/anchore-poc/converter
+  - environment/*/*/.terraform
+
+#ignore-patterns:
+#  - (^|/)skip(this)?(/|$)
+
+pycodestyle:
+  disable:
+    - E203
+  options:
+    max-line-length: 120
+
+#mccabe:
+#  run: false
