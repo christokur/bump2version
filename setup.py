@@ -1,45 +1,32 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-import io
-import re
-from os.path import dirname
-from os.path import join
-
-from setuptools import find_packages
+import os
 from setuptools import setup
-
-
-def read(*names, **kwargs):
-    return io.open(
-        join(dirname(__file__), *names),
-        encoding=kwargs.get('encoding', 'utf8')
-    ).read()
-
 
 description = 'Version-bump your software with a single command!'
 
-long_description = '%s\n%s' % (
-        re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub('', read('README.rst')),
-        re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst')))
+# Import the README and use it as the long-description.
+# This requires 'README.md' to be present in MANIFEST.in.
+here = os.path.abspath(os.path.dirname(__file__))
+with open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
+    long_description = '\n' + f.read()
 
 setup(
-    name='advbumpversion',
-    version='1.3.0',
-    url='https://github.com/andrivet/advbumpversion',
-    packages=find_packages('.'),
-    author='Sebastien Andrivet',
-    author_email='sebastien@andrivet.com',
+    name='bump2version',
+    version='1.0.2-dev',
+    url='https://github.com/c4urself/bump2version',
+    author='Christian Verkerk',
+    author_email='christianverkerk@ymail.com',
     license='MIT',
+    packages=['bumpversion'],
     description=description,
     long_description=long_description,
+    long_description_content_type='text/markdown',
     entry_points={
         'console_scripts': [
-            'bumpversion = bumpversion:_main',
-            'bump2version = bumpversion:_main',
-            'advbumpversion = bumpversion:_main',
+            'bumpversion = bumpversion.cli:main',
+            'bump2version = bumpversion.cli:main',
         ]
     },
+    python_requires='>=3.5',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
@@ -51,9 +38,13 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3 :: Only',
-        'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
-    ], tests_require=['pytest', 'mock']
+    ],
+    extras_require={
+        'test': [
+            'testfixtures>=1.2.0',
+            'pytest>=3.4.0',
+         ],
+    },
 )

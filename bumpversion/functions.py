@@ -1,7 +1,7 @@
 import re
 
 
-class NumericFunction(object):
+class NumericFunction:
 
     """
     This is a class that provides a numeric function for version parts.
@@ -15,16 +15,19 @@ class NumericFunction(object):
     considered (e.g. 'r3-001' --> 'r4-001').
     """
 
-    FIRST_NUMERIC = re.compile('([^\d]*)(\d+)(.*)')
+    FIRST_NUMERIC = re.compile(r"([^\d]*)(\d+)(.*)")
 
     def __init__(self, first_value=None, independent=False):
 
         if first_value is not None:
             try:
-                self.FIRST_NUMERIC.search(first_value).groups()
+                _, _, _ = self.FIRST_NUMERIC.search(
+                    first_value
+                ).groups()
             except AttributeError:
                 raise ValueError(
-                    "The given first value {} does not contain any digit".format(first_value))
+                    "The given first value {} does not contain any digit".format(first_value)
+                )
         else:
             first_value = 0
 
@@ -34,13 +37,14 @@ class NumericFunction(object):
 
     def bump(self, value):
         part_prefix, part_numeric, part_suffix = self.FIRST_NUMERIC.search(
-            value).groups()
+            value
+        ).groups()
         bumped_numeric = int(part_numeric) + 1
 
         return "".join([part_prefix, str(bumped_numeric), part_suffix])
 
 
-class ValuesFunction(object):
+class ValuesFunction:
 
     """
     This is a class that provides a values list based function for version parts.
@@ -56,7 +60,7 @@ class ValuesFunction(object):
 
     def __init__(self, values, optional_value=None, first_value=None, independent=False):
 
-        if len(values) == 0:
+        if not values:
             raise ValueError("Version part values cannot be empty")
 
         self._values = values
@@ -65,8 +69,11 @@ class ValuesFunction(object):
             optional_value = values[0]
 
         if optional_value not in values:
-            raise ValueError("Optional value {0} must be included in values {1}".format(
-                optional_value, values))
+            raise ValueError(
+                "Optional value {} must be included in values {}".format(
+                    optional_value, values
+                )
+            )
 
         self.optional_value = optional_value
 
@@ -74,16 +81,21 @@ class ValuesFunction(object):
             first_value = values[0]
 
         if first_value not in values:
-            raise ValueError("First value {0} must be included in values {1}".format(
-                first_value, values))
+            raise ValueError(
+                "First value {} must be included in values {}".format(
+                    first_value, values
+                )
+            )
 
         self.first_value = first_value
         self.independent = independent
 
     def bump(self, value):
         try:
-            return self._values[self._values.index(value)+1]
+            return self._values[self._values.index(value) + 1]
         except IndexError:
             raise ValueError(
-                "The part has already the maximum value among {} and cannot be bumped.".format(self._values))
-
+                "The part has already the maximum value among {} and cannot be bumped.".format(
+                    self._values
+                )
+            )
