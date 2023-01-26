@@ -119,14 +119,17 @@ add_select = "D401,D404"
 
 [tool.coverage.run]
 command_line = "-m pytest"
-source = ["poetry_bump2version"]
+source = ["bumpversion"]
 parallel = true
 
 [tool.coverage.report]
-fail_under = 29
+fail_under = 90
 
 [tool.coverage.paths]
-source = []
+source = [
+    "bumpversion",
+    "**/site-packages/bumpversion",
+]
 
 [tool.tox]
 legacy_tox_ini = """
@@ -203,7 +206,7 @@ help = "Do a few lint type checks"
 
 [tool.poe.tasks.test-cov]
 shell = """
-coverage run -m pytest --doctest-modules -r a [] tests
+coverage run -m pytest -v --doctest-modules tests
 coverage combine
 coverage lcov -o coverage/lcov.info
 coverage report
