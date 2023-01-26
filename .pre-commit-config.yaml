@@ -11,11 +11,14 @@ repos:
     rev: v4.3.0
     hooks:
       - id: check-json
+        exclude: ^(tests/test-cases/.*|docs/examples/.*)$
       - id: check-yaml
+        exclude: ^(tests/test-cases.*|docs/examples/.*)$
       - id: check-toml
       - id: end-of-file-fixer
-        exclude: ^(requirements.txt|CHANGELOG.md|runConfigurations/.*|environment/legacy/anchore-poc/application-.*\.tf)$
+        exclude: ^(requirements.txt|CHANGELOG.md|runConfigurations/.*|environment/legacy/anchore-poc/application-.*\.tf|tests/test-cases.*|docs/examples/.*)$
       - id: trailing-whitespace
+        exclude: ^(tests/test-cases.*|docs/examples/.*)$
       - id: check-case-conflict
       - id: check-merge-conflict
       - id: forbid-new-submodules

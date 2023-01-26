@@ -1,5 +1,5 @@
 output-format: pylint
-
+autodetect: false
 strictness: veryhigh
 test-warnings: true
 doc-warnings: false
@@ -11,8 +11,9 @@ max-line-length: 120
 ignore-paths:
   - docs/
   - debug
-  - environment/legacy/anchore-poc/converter
-  - environment/*/*/.terraform
+  - tests/
+  - bumpversion/
+  - setup.py
 
 #ignore-patterns:
 #  - (^|/)skip(this)?(/|$)

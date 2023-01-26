@@ -5,15 +5,16 @@ requires = [
 ]
 
 [tool.poetry]
-name = "b2b-infrastructure"
-version = "0.13.0"
-description = "A Terraform repository for B2B infrastructure"
-authors = ["Christo De Lange <christo.delange@sands.com>"]
-license = "(c) 2022 Las Vegas Sands"
+name = "bump2version"
+version = "1.0.2-dev"
+description = "Version-bump your software with a single command!"
+authors = ["Christian Verkerk <christianverkerk@ymail.com>"]
+readme = "README.md"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: Apache Software License",
+    'License :: OSI Approved :: MIT License',
+    'Operating System :: OS Independent',
     "Programming Language :: Python",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.8",
@@ -23,9 +24,17 @@ classifiers = [
     "Topic :: Utilities",
     "Typing :: Typed",
 ]
+license = "MIT"
 packages = [
-    { include = "b2b_infrastructure", from = "src" },
+    { include = "bumpversion" },
 ]
+
+[tool.poetry.scripts]
+bumpversion = "bumpversion.cli:main"
+bump2version = "bumpversion.cli:main"
+
+[tool.poetry.urls]
+Homepage = "https://github.com/christokur/bump2version"
 
 [[tool.poetry.source]]
 name = "codeartifact"
@@ -35,56 +44,49 @@ default = true
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.12.0"
-Jinja2 = "~3.1.2"
-jmespath = "~1.0.1"
-PyYAML = "~6.0"
-template = "~0.7.6"
-python-dotenv = "^0.21.0"
-python-hcl2 = "^4.0.0"
-structlog = "^22.3.0"
-python-terraform = "^0.10.1"
-boto3 = "~1.26.37"
-python-toolbag = "~0.5.1"
 
 [tool.poetry.dev-dependencies]
-poetry = "~1.3.1"
 pip = "~22.3"
-bump2version = "~1.0.1"
+poetry = "~1.3.2"
 tox = "~3.26.0"
+tox-pyenv = "~1.1.0"
+cachecontrol = "^0.12.11"
+lockfile = "0.12.2"
+virtualenv = "~20.10.0"
 black = "~22.10.0"
 isort = "~5.10.1"
 pydocstyle = { version = "~6.1.1", extras = ["toml"] }
-pytest = "~7.1.3"
+pytest = "~7.2.0"
 pytest-cov = "~4.0.0"
 poethepoet = "~0.15.0"
 coverage = { version = "~6.5.0", extras = ["toml"] }
+pre-commit = "~2.21.0"
 pyproject-fmt = "~0.3.5"
-poetry-plugin-bump2version = { version = "~0.8.2", source = "codeartifact" }
-rstcheck = "~6.1.0"
-docutils = "~0.18.1" # RST Preview
-Pygments = "~2.13.0" # RST Preview
 # https://githubplus.com/PyCQA/prospector/issues/539 1.7.7 with pylint>=2.15.7
 # We can either pin pylint or hope a newer prospector fixes the problem.
 # UPDATE: Fixed in 1.8.4 ... By US! :)
 #pylint = "==2.15.6"
 #prospector = { extras = ["with-everything"], version = "~1.8.4" }
 prospector = { git = "https://github.com/christokur/prospector.git", extras = ["with-everything"], branch = "master" }
-virtualenv = "~20.10.0"
-pre-commit = "~2.21.0"
-pytest-html = "^3.2.0"
-pystache = "^0.6.0"
-gitlint = "^0.18.0"
+#gitlint = "^0.18.0"
 commitizen = "^2.38.0"
+python-coveralls = "2.9.3"
+pytest-doctestplus = "~0.12.1"
+pytest-html = "^3.2.0"
+#mkdocs = "~1.4.2"
 #portray = "~1.8.0"
 pdocs = { git = "https://github.com/christokur/pdocs.git", branch = "master" }
 portray = { git = "https://github.com/christokur/portray.git", branch = "main" }
+mkdocs-material = ">=8.1.4,<9.0.0"
+mdx-include = ">=1.4.1,<2.0.0"
+mkdocs-markdownextradata-plugin = ">=0.1.7,<0.3.0"
+#bump2version = { git = "https://github.com/christokur/bump2version.git", branch = "master" }
+#poetry-plugin-bump2version = "~0.8.2"
 
-#[tool.poetry.group.dev_extra.dependencies]
-#gitown = { git = "git@github.com:SandsB2B/pre-commit-hook-gitown.git", branch="master" }
-#b2b-project-lint = { git = "git@github.com:SandsB2B/b2b-project-lint.git", branch="master" }
+testfixtures = {version = ">=1.2.0"}
 
-[tool.poetry.urls]
-Homepage = "https://github.com/SandsB2B/b2b-infrastructure"
+[tool.poetry.extras]
+test = ["testfixtures"]
 
 [tool.poetry_bump2version.options]
 list = true
@@ -131,38 +133,31 @@ legacy_tox_ini = """
 # tox.ini
 [tox]
 isolated_build = True
-envlist = python3.9,python3.10,python3.11,lint,isort
+envlist = python3.9,python3.10,python3.11
 skip_missing_interpreters = True
 toxworkdir=/tmp/.tox
 temp_dir=/tmp
 
-[gh-actions]
-python =
-    3.9: python3.9,lint,isort
-    3.10: python3.10
-    3.11: python3.11
+[testenv]
+passenv = HOME
+deps=
+  pytest>=3.4.0
+  testfixtures>=1.2.0
+commands=
+  pytest -r a [] tests
 
 [pytest]
 pep8maxlinelength = 120
+minversion= 2.0
+norecursedirs= .git .hg .tox build dist tmp*
+python_files = test*.py
 
-[pydocstyle]
-add-ignore = D107
+[gh-actions]
+python =
+    3.9: python3.9
+    3.10: python3.10
+    3.11: python3.11
 
-[testenv]
-deps = -rrequirements-dev.txt
-commands = py.test -s -v --cov-report term-missing --cov-report html --cov naming tests/
-recreate = True
-
-[testenv:lint]
-deps = -rrequirements-dev.txt
-commands = prospector --profile prospector.yaml
-
-[testenv:isort]
-deps =
-    isort
-commands =
-    - isort --check src
-ignore_errors = true
 """
 
 [tool.poe.env]
@@ -171,13 +166,13 @@ PYTHONWARNINGS = "ignore::Warning:setuptools.command.install"
 [tool.poe.tasks]
 pyproject-fmt = { shell = "pyproject-fmt pyproject.toml" }
 check-lock = { shell = "poetry lock --check | grep -v 'not consistent'", help = "poetry lock workaround for https://github.com/nat-n/poethepoet/issues/91" }
-set-lock = { shell = "poetry lock", help = "Locks the project dependencies in poetry.lock" }
-pc-install = { shell = "pre-commit install", help = "Set up pre-commit hooks"}
+set-lock = { shell = "poetry lock --no-update", help = "Locks the project dependencies in poetry.lock" }
+pc-install = { shell = "pre-commit install; gitlint install-hook", help = "Set up pre-commit hooks"}
 pc-autoupdate = { shell = "pre-commit autoupdate", help = "Auto update pre-commit hooks"}
 hooks = { shell = "pre-commit run --all-files", help = "Run pre-commit hooks on all files" }
-isort = { shell = "export PYTHONWARNINGS='ignore::Warning:setuptools.command.install'; isort src tests", help = "isort imports in src and tests" }
-black = { shell = "black environment", help = "black formatting in src and tests" }
-tests = { shell = "echo poetry run pytest tests", help = "pytest's" }
+isort = { shell = "export PYTHONWARNINGS='ignore::Warning:setuptools.command.install'; isort bumpversion tests", help = "isort imports in bumpversion and tests" }
+black = { shell = "black bumpversion tests", help = "black formatting in src and tests" }
+tests = { shell = "poetry run pytest -v -r a [] tests", help = "pytest's" }
 pros = { shell = "prospector --profile prospector.yaml", help = "Prospector" }
 b2v = { cmd = "bump2version patch --new-version '${version}' --allow-dirty --commit", args = [{ name = "version", positional=true,multiple=false }], help = "Prospector" }
 gcl = { shell = "cz changelog", help = "Git Changelog" }
@@ -187,7 +182,7 @@ format = { shell = "black --check --diff ." }
 add = { shell = "git add -A" }
 ibtl = { sequence = ["isort", "black", "tests", "lint"] }
 doctests = { shell = "poetry run pytest --doctest-modules --verbose src", help = "doctest's" }
-prepare = { sequence = ["locks", "exports", "formats", "tests", "add", "hooks"], help = "Do things to prepare for release" }
+prepare = { sequence = ["locks", "exports", "formats", "tests", "add", "hooks", "gcl"], help = "Do things to prepare for release" }
 docs-build = { shell = "rm -fr site || true; PYTHONPATH=src poetry run portray as_html" }
 docs-serve = { shell = "rm -fr site || true; PYTHONPATH=src poetry run portray in_browser" }
 pu = { shell = "poetry update", help = "Poetry update" }
@@ -200,16 +195,15 @@ locks = { sequence = ["set-lock", "check-lock"], help = "Manage poetry.lock" }
 [tool.poe.tasks.lint]
 # pydocstyle src
 shell = """
-python -m black --check environment
-python -m isort --check-only environment
-rstcheck --report-level warning *.rst
+python -m black --check bumpversion tests
+python -m isort --check-only bumpversion tests
 python -m prospector --profile prospector.yaml
 """
 help = "Do a few lint type checks"
 
 [tool.poe.tasks.test-cov]
 shell = """
-coverage run
+coverage run -m pytest --doctest-modules -r a [] tests
 coverage combine
 coverage lcov -o coverage/lcov.info
 coverage report
@@ -269,16 +263,16 @@ style = [
 [tool.portray]
 docs_dir = "docs"
 output_dir = "site"
-modules = ["b2b_infrastructure"]
+modules = ["bumpversion"]
 port = 8002
 append_directory_to_python_path = false
 extra_markdown_extensions = ["admonition", "codehilite", "extra"]
 
 [tool.portray.mkdocs]
-site_name = "B2B Infrastructure"
-site_description = "IaC for your B2B projects"
-site_url = "https://b2b-infrastructure.docs.infra-area2.com/"
-repo_url = "https://github.com/SandsB2B/b2b-infrastructure"
+site_name = "bump2version"
+site_description = "Version-bump your software with a single command!"
+site_url = "https://christokur.github.io/bump2version"
+repo_url = "https://github.com/christokur/bump2version"
 edit_uri = "edit/master"
 copyright = "(c) 2022 Las Vegas Sands"
 

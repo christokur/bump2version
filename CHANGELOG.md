@@ -1,4 +1,5 @@
 **unreleased**
+**v1.0.2-beta1**
 **v1.0.2-dev**
 - Housekeeping: migrated from travis+appveyor to GitHub Actions for CI, thanks @clbarnes
 
@@ -193,3 +194,9 @@ in the configuration format. This release is fully backwards compatible to
 **v0.1.0**
 
 - Initial public version
+
+## Unreleased
+
+### BREAKING CHANGE
+
+- --bump is now the first positional argument

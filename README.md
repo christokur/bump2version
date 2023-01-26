@@ -1,4 +1,4 @@
-# bump2version v1.0.2-dev
+# bump2version v1.0.2-beta1
 
 ## NOTE
 
@@ -360,7 +360,7 @@ independent = True
 
   Here, `bump2version build` would bump `2.1.6-5123` to `2.1.6-5124`. Executing`bump2version major`
   would bump `2.1.6-5124` to `3.0.0-5124` without resetting the build number.
-  
+
 
 ### Configuration file -- File specific configuration
 
