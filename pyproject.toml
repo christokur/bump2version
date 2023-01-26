@@ -6,7 +6,7 @@ requires = [
 
 [tool.poetry]
 name = "bump2version"
-version = "version = "version = "1.0.2-beta3"""
+version = "1.0.2-beta3"
 description = "Version-bump your software with a single command!"
 authors = ["Christian Verkerk <christianverkerk@ymail.com>"]
 readme = "README.md"
