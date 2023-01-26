@@ -37,6 +37,11 @@ jobs:
           python-version: ${{ matrix.python-version }}
           #cache: poetry
 
+      - uses: ConorMacBride/install-package@v1
+        with:
+          brew: mercurial
+          apt: mercurial
+
       - name: Check git is working
         run: |
           git config --global user.email "bumpversion-test-git@github.actions"
@@ -45,8 +50,6 @@ jobs:
           git config --list
       - name: Check mercurial is working
         run: |
-          dpkg --get-selections
-          
           echo -e '[ui]\nusername = Testing Mercurial on Travis CI <bumpversion-test-hg@travis.ci>' > ~/.hgrc
           hg --version
 
