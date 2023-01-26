@@ -1,4 +1,5 @@
 **unreleased**
+**v1.0.2-beta2**
 **v1.0.2-beta1**
 **v1.0.2-dev**
 - Housekeeping: migrated from travis+appveyor to GitHub Actions for CI, thanks @clbarnes
