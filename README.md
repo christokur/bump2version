@@ -1,4 +1,4 @@
-# bump2version vvvvvvvvvv1.0.2-beta3
+# bump2version 1.0.2-beta3
 
 ## NOTE
 
