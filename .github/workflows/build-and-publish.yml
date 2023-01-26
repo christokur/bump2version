@@ -127,14 +127,3 @@ jobs:
           poetry version
           poetry build
           poetry publish -r codeartifact
-
-      - name: Build docs
-        run: |
-          poetry run poe docs-build
-
-      - name: Publish docs(./site)
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/master' }} && matrix.python-version == '3.9' && matrix.os == 'ubuntu-latest'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
