@@ -579,4 +579,4 @@ workflow, as it is intended to be very versatile.
 
 ## License
 
-bump2version is licensed under the MIT License - see the [LICENSE.rst](LICENSE.rst) file for details
+bump2version is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

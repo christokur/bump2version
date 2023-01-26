@@ -6,7 +6,7 @@ requires = [
 
 [tool.poetry]
 name = "bump2version"
-version = "1.0.2-dev"
+version = "1.0.2-beta1"
 description = "Version-bump your software with a single command!"
 authors = ["Christian Verkerk <christianverkerk@ymail.com>"]
 readme = "README.md"
@@ -175,7 +175,7 @@ black = { shell = "black bumpversion tests", help = "black formatting in src and
 tests = { shell = "poetry run pytest -v -r a [] tests", help = "pytest's" }
 pros = { shell = "prospector --profile prospector.yaml", help = "Prospector" }
 b2v = { cmd = "bump2version patch --new-version '${version}' --allow-dirty --commit", args = [{ name = "version", positional=true,multiple=false }], help = "Prospector" }
-gcl = { shell = "cz changelog", help = "Git Changelog" }
+gcl = { shell = "cz changelog --incremental", help = "Git Changelog" }
 gl = { shell = "gitlint", help = "Gitlint last commit" }
 gitown = { shell = "gitown --ownership_threshold=10 --codeowners_filename=CODEOWNERS CODEOWNERS", help = "Githib CODEOWNERS" }
 format = { shell = "black --check --diff ." }
@@ -184,7 +184,7 @@ ibtl = { sequence = ["isort", "black", "tests", "lint"] }
 doctests = { shell = "poetry run pytest --doctest-modules --verbose src", help = "doctest's" }
 prepare = { sequence = ["locks", "exports", "formats", "tests", "add", "hooks", "gcl"], help = "Do things to prepare for release" }
 docs-build = { shell = "rm -fr site || true; PYTHONPATH=src poetry run portray as_html" }
-docs-serve = { shell = "rm -fr site || true; PYTHONPATH=src poetry run portray in_browser" }
+docs-serve = { shell = "rm -fr site || true; PYTHONPATH=src poetry run portray in_browser --reload" }
 pu = { shell = "poetry update", help = "Poetry update" }
 pule = { sequence = ["pu", "locks", "exports"], help = "Poetry update and exports" }
 

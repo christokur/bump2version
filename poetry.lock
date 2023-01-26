@@ -2214,7 +2214,7 @@ yaspin = ">=0.15.0,<3"
 type = "git"
 url = "https://github.com/christokur/portray.git"
 reference = "main"
-resolved_reference = "f8b6d664f0c4d6923958f805fce1a1f94c5eaa6f"
+resolved_reference = "128e5d89daa2729b5f32957b676714b5fd17c9df"
 
 [[package]]
 name = "pre-commit"
