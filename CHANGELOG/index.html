@@ -1,0 +1,971 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Version-bump your software with a single command!">
+      
+      
+      
+        <link rel="canonical" href="https://christokur.github.io/bump2version/CHANGELOG/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.4">
+    
+    
+      
+        <title>Changelog - bump2version</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.80dcb947.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="/docs/css/termynal.css">
+    
+      <link rel="stylesheet" href="/docs/css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="brown">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unreleased" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="bump2version" class="md-header__button md-logo" aria-label="bump2version" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            bump2version
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Changelog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="brown"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="yellow"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/christokur/bump2version" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bump2version
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="bump2version" class="md-nav__button md-logo" aria-label="bump2version" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    bump2version
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/christokur/bump2version" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bump2version
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Changelog
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Changelog
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unreleased" class="md-nav__link">
+    Unreleased
+  </a>
+  
+    <nav class="md-nav" aria-label="Unreleased">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-change" class="md-nav__link">
+    BREAKING CHANGE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LICENSE/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RELATED/" class="md-nav__link">
+        Related
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/TODO/" class="md-nav__link">
+        Todo
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1" type="checkbox" id="__nav_7_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_1">
+          Semantic Versioning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Semantic Versioning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Semantic Versioning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/examples/semantic-versioning/" class="md-nav__link">
+        Readme
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_1" type="checkbox" id="__nav_8_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_1">
+          Bumpversion
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bumpversion" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_1">
+          <span class="md-nav__icon md-icon"></span>
+          Bumpversion
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/bumpversion/cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/bumpversion/exceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/bumpversion/functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/bumpversion/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/bumpversion/utils/" class="md-nav__link">
+        Utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/bumpversion/vcs/" class="md-nav__link">
+        Vcs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/bumpversion/version_part/" class="md-nav__link">
+        Version Part
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unreleased" class="md-nav__link">
+    Unreleased
+  </a>
+  
+    <nav class="md-nav" aria-label="Unreleased">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-change" class="md-nav__link">
+    BREAKING CHANGE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/christokur/bump2version/edit/master/CHANGELOG.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+  <h1>Changelog</h1>
+
+<p><strong>unreleased</strong>
+<strong>v1.0.2-beta2</strong>
+<strong>v1.0.2-beta1</strong>
+<strong>v1.0.2-dev</strong>
+- Housekeeping: migrated from travis+appveyor to GitHub Actions for CI, thanks @clbarnes</p>
+<p><strong>v1.0.1</strong>
+- Added: enable special characters in search/replace, thanks @mckelvin
+- Added: allow globbing a pattern to match multiple files, thanks @balrok
+- Added: way to only bump a specified file via --no-configured-files, thanks @balrok
+- Fixed: dry-run now correctly outputs, thanks @fmigneault
+- Housekeeping: documentation for lightweight tags improved, thanks @GreatBahram
+- Housekeeping: added related tools document, thanks @florisla
+- Fixed: no more falling back to default search, thanks @florisla</p>
+<p><strong>v1.0.0</strong>
+- Fix the spurious newline that bump2version adds when writing to bumpversion.cfg, thanks @kyluca #58
+- Add Python3.8 support, thanks @florisla
+- Drop Python2 support, thanks @hugovk
+- Allow additional arguments to the commit call, thanks @lubomir
+- Various documentation improvements, thanks @lubomir @florisla @padamstx @glotis
+- Housekeeping, move changelog into own file</p>
+<p><strong>v0.5.11</strong></p>
+<ul>
+<li>Housekeeping, also publish an sdist</li>
+<li>Housekeeping, fix appveyor builds</li>
+<li>Housekeeping, <code>make lint</code> now lints with pylint</li>
+<li>Drop support for Python3.4, thanks @hugovk #79</li>
+<li>Enhance missing VCS command detection (errno 13), thanks @lowell80 #75</li>
+<li>Add environment variables for other scripts to use, thanks @mauvilsa #70</li>
+<li>Refactor, cli.main is now much more readable, thanks @florisla #68</li>
+<li>Fix, retain file newlines for Windows, thanks @hesstobi #59</li>
+<li>Add support (tests) for Pythno3.7, thanks @florisla #49</li>
+<li>Allow any part to be configured in configurable strings such as tag_name etc., thanks @florisla #41</li>
+</ul>
+<p><strong>v0.5.10</strong></p>
+<ul>
+<li>Housekeeping, use twine</li>
+</ul>
+<p><strong>v0.5.9</strong></p>
+<ul>
+<li>Fixed windows appveyor-based testing, thanks: @jeremycarroll #33 and #34</li>
+<li>Fixed interpolating correctly when using setup.cfg for config, thanks: @SethMMorton #32</li>
+<li>Improve tox/travis testing, thanks: @ekohl #27</li>
+<li>Fixed markdown formatting in setup.py for pypi.org documentation, thanks: @florisla, @Mattwmaster58 #26</li>
+</ul>
+<p><strong>v0.5.8</strong></p>
+<ul>
+<li>Updated the readme to markdown for easier maintainability</li>
+<li>Fixed travis testing, thanks: @sharksforarms #15</li>
+<li>Added support for newlines, thanks: @sharksforarms #14</li>
+<li>Fixed an issue with a TypeError on Windows, thanks: @lorengordon #12</li>
+<li>Standardised the python versions, thanks: @ekohl #8</li>
+<li>Fixed testing for pypy, #7</li>
+</ul>
+<p><strong>v0.5.7</strong></p>
+<ul>
+<li>Added support for signing tags (git tag -s)
+  thanks: @Californian <a href="https://github.com/c4urself/bump2version/pull/6">#6</a></li>
+</ul>
+<p><strong>v0.5.6</strong></p>
+<ul>
+<li>Added compatibility with <code>bumpversion</code> by making script install as <code>bumpversion</code> as well
+  thanks: @the-allanc <a href="https://github.com/c4urself/bump2version/pull/2">#2</a></li>
+</ul>
+<p><strong>v0.5.5</strong></p>
+<ul>
+<li>Added support for annotated tags
+  thanks: @ekohl @gvangool <a href="https://github.com/peritus/bumpversion/pull/58">#58</a></li>
+</ul>
+<p><strong>v0.5.4</strong></p>
+<ul>
+<li>Renamed to bump2version to ensure no conflicts with original package</li>
+</ul>
+<p><strong>v0.5.3</strong></p>
+<ul>
+<li>Fix bug where <code>--new-version</code> value was not used when config was present
+  (thanks @cscetbon @ecordell <a href="https://github.com/peritus/bumpversion/pull/60">#60</a></li>
+<li>Preserve case of keys config file
+  (thanks theskumar <a href="https://github.com/peritus/bumpversion/pull/75">#75</a></li>
+<li>Windows CRLF improvements (thanks @thebjorn)</li>
+</ul>
+<p><strong>v0.5.1</strong></p>
+<ul>
+<li>Document file specific options <code>search =</code> and <code>replace =</code> (introduced in 0.5.0)</li>
+<li>Fix parsing individual labels from <code>serialize =</code> config even if there are
+  characters after the last label (thanks @mskrajnowski <a href="https://github.com/peritus/bumpversion/pull/56">#56</a></li>
+<li>Fix: Don't crash in git repositories that have tags that contain hyphens <a href="https://github.com/peritus/bumpversion/pull/51">#51</a> and <a href="https://github.com/peritus/bumpversion/pull/52">#52</a></li>
+<li>Fix: Log actual content of the config file, not what ConfigParser prints
+  after reading it.</li>
+<li>Fix: Support multiline values in <code>search =</code></li>
+<li>also load configuration from <code>setup.cfg</code>, thanks @t-8ch <a href="https://github.com/peritus/bumpversion/pull/57">#57</a></li>
+</ul>
+<p><strong>v0.5.0</strong></p>
+<p>This is a major one, containing two larger features, that require some changes
+in the configuration format. This release is fully backwards compatible to
+<em>v0.4.1</em>, however deprecates two uses that will be removed in a future version.</p>
+<ul>
+<li>New feature: <code>Part specific configuration</code></li>
+<li>New feature: <code>File specific configuration</code></li>
+<li>New feature: parse option can now span multiple line (allows to comment complex
+  regular expressions. See re.VERBOSE in the <a href="https://docs.python.org/library/re.html#re.VERBOSE">Python documentation</a> for details, also see <a href="https://github.com/peritus/bumpversion/blob/165e5d8bd308e9b7a1a6d17dba8aec9603f2d063/tests.py#L1202-L1211">this testcase</a> as an example.</li>
+<li>New feature: <code>--allow-dirty</code> <a href="https://github.com/peritus/bumpversion/pull/42">#42</a></li>
+<li>Fix: Save the files in binary mode to avoid mutating newlines (thanks @jaraco <a href="https://github.com/peritus/bumpversion/pull/45">#45</a></li>
+<li>License: bumpversion is now licensed under the MIT License <a href="https://github.com/peritus/bumpversion/issues/47">#47</a></li>
+<li>Deprecate multiple files on the command line (use a <code>configuration file</code> instead, or invoke <code>bumpversion</code> multiple times)</li>
+<li>Deprecate 'files =' configuration (use <code>file specific configuration</code> instead)</li>
+</ul>
+<p><strong>v0.4.1</strong></p>
+<ul>
+<li>Add --list option <a href="https://github.com/peritus/bumpversion/issues/39">#39</a></li>
+<li>Use temporary files for handing over commit/tag messages to git/hg <a href="https://github.com/peritus/bumpversion/issues/36">#36</a></li>
+<li>Fix: don't encode stdout as utf-8 on py3 <a href="https://github.com/peritus/bumpversion/issues/40">#40</a></li>
+<li>Fix: logging of content of config file was wrong</li>
+</ul>
+<p><strong>v0.4.0</strong></p>
+<ul>
+<li>Add --verbose option <a href="https://github.com/peritus/bumpversion/issues/21">#21</a> <a href="https://github.com/peritus/bumpversion/issues/30">#30</a></li>
+<li>Allow option --serialize multiple times</li>
+</ul>
+<p><strong>v0.3.8</strong></p>
+<ul>
+<li>Fix: --parse/--serialize didn't work from cfg <a href="https://github.com/peritus/bumpversion/issues/34">#34</a></li>
+</ul>
+<p><strong>v0.3.7</strong></p>
+<ul>
+<li>Don't fail if git or hg is not installed (thanks @keimlink)</li>
+<li>"files" option is now optional <a href="https://github.com/peritus/bumpversion/issues/16">#16</a></li>
+<li>Fix bug related to dirty work dir <a href="https://github.com/peritus/bumpversion/issues/28">#28</a></li>
+</ul>
+<p><strong>v0.3.6</strong></p>
+<ul>
+<li>Fix --tag default (thanks @keimlink)</li>
+</ul>
+<p><strong>v0.3.5</strong></p>
+<ul>
+<li>add {now} and {utcnow} to context</li>
+<li>use correct file encoding writing to config file. NOTE: If you are using
+  Python2 and want to use UTF-8 encoded characters in your config file, you
+  need to update ConfigParser like using 'pip install -U configparser'</li>
+<li>leave <code>current_version</code> in config even if available from vcs tags (was
+  confusing)</li>
+<li>print own version number in usage</li>
+<li>allow bumping parts that contain non-numerics</li>
+<li>various fixes regarding file encoding</li>
+</ul>
+<p><strong>v0.3.4</strong></p>
+<ul>
+<li>bugfix: tag_name and message in .bumpversion.cfg didn't have an effect <a href="https://github.com/peritus/bumpversion/issues/9">#9</a></li>
+</ul>
+<p><strong>v0.3.3</strong></p>
+<ul>
+<li>add --tag-name option</li>
+<li>now works on Python 3.2, 3.3 and PyPy</li>
+</ul>
+<p><strong>v0.3.2</strong></p>
+<ul>
+<li>bugfix: Read only tags from <code>git describe</code> that look like versions</li>
+</ul>
+<p><strong>v0.3.1</strong></p>
+<ul>
+<li>bugfix: <code>--help</code> in git workdir raising AssertionError</li>
+<li>bugfix: fail earlier if one of files does not exist</li>
+<li>bugfix: <code>commit = True</code> / <code>tag = True</code> in .bumpversion.cfg had no effect</li>
+</ul>
+<p><strong>v0.3.0</strong></p>
+<ul>
+<li><strong>BREAKING CHANGE</strong> The <code>--bump</code> argument was removed, this is now the first
+  positional argument.
+  If you used <code>bumpversion --bump major</code> before, you can use
+  <code>bumpversion major</code> now.
+  If you used <code>bumpversion</code> without arguments before, you now
+  need to specify the part (previous default was <code>patch</code>) as in
+  <code>bumpversion patch</code>).</li>
+</ul>
+<p><strong>v0.2.2</strong></p>
+<ul>
+<li>add --no-commit, --no-tag</li>
+</ul>
+<p><strong>v0.2.1</strong></p>
+<ul>
+<li>If available, use git to learn about current version</li>
+</ul>
+<p><strong>v0.2.0</strong></p>
+<ul>
+<li>Mercurial support</li>
+</ul>
+<p><strong>v0.1.1</strong></p>
+<ul>
+<li>Only create a tag when it's requested (thanks @gvangool)</li>
+</ul>
+<p><strong>v0.1.0</strong></p>
+<ul>
+<li>Initial public version</li>
+</ul>
+<h2 id="unreleased">Unreleased</h2>
+<h3 id="breaking-change">BREAKING CHANGE</h3>
+<ul>
+<li>--bump is now the first positional argument</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../CONTRIBUTING/" class="md-footer__link md-footer__link--next" aria-label="Next: Contributing" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Contributing
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      (c) 2022 Las Vegas Sands
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["search.suggest", "search.highlight", "content.tabs.link"], "search": "../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+        <script src="/docs/js/termynal.js"></script>
+      
+        <script src="/docs/js/custom.js"></script>
+      
+    
+  </body>
+</html>

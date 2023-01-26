@@ -1,0 +1,1627 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Version-bump your software with a single command!">
+      
+      
+      
+        <link rel="canonical" href="https://christokur.github.io/bump2version/reference/bumpversion/utils/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.4">
+    
+    
+      
+        <title>Utils - bump2version</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.80dcb947.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="/docs/css/termynal.css">
+    
+      <link rel="stylesheet" href="/docs/css/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="brown">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-bumpversionutils" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="bump2version" class="md-header__button md-logo" aria-label="bump2version" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            bump2version
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Utils
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="brown"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="yellow"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/christokur/bump2version" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bump2version
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="bump2version" class="md-nav__button md-logo" aria-label="bump2version" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    bump2version
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/christokur/bump2version" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bump2version
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CHANGELOG/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LICENSE/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RELATED/" class="md-nav__link">
+        Related
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/TODO/" class="md-nav__link">
+        Todo
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1" type="checkbox" id="__nav_7_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_1">
+          Semantic Versioning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Semantic Versioning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Semantic Versioning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/examples/semantic-versioning/" class="md-nav__link">
+        Readme
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_1" type="checkbox" id="__nav_8_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_1">
+          Bumpversion
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bumpversion" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_1">
+          <span class="md-nav__icon md-icon"></span>
+          Bumpversion
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Utils
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Utils
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keyvaluestring" class="md-nav__link">
+    keyvaluestring
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefixed_environ" class="md-nav__link">
+    prefixed_environ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuredfile" class="md-nav__link">
+    ConfiguredFile
+  </a>
+  
+    <nav class="md-nav" aria-label="ConfiguredFile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contains" class="md-nav__link">
+    contains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace" class="md-nav__link">
+    replace
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should_contain_version" class="md-nav__link">
+    should_contain_version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discarddefaultifspecifiedappendaction" class="md-nav__link">
+    DiscardDefaultIfSpecifiedAppendAction
+  </a>
+  
+    <nav class="md-nav" aria-label="DiscardDefaultIfSpecifiedAppendAction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ancestors-in-mro" class="md-nav__link">
+    Ancestors (in MRO)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vcs/" class="md-nav__link">
+        Vcs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version_part/" class="md-nav__link">
+        Version Part
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keyvaluestring" class="md-nav__link">
+    keyvaluestring
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefixed_environ" class="md-nav__link">
+    prefixed_environ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuredfile" class="md-nav__link">
+    ConfiguredFile
+  </a>
+  
+    <nav class="md-nav" aria-label="ConfiguredFile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contains" class="md-nav__link">
+    contains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace" class="md-nav__link">
+    replace
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should_contain_version" class="md-nav__link">
+    should_contain_version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discarddefaultifspecifiedappendaction" class="md-nav__link">
+    DiscardDefaultIfSpecifiedAppendAction
+  </a>
+  
+    <nav class="md-nav" aria-label="DiscardDefaultIfSpecifiedAppendAction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ancestors-in-mro" class="md-nav__link">
+    Ancestors (in MRO)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/christokur/bump2version/edit/master/reference/bumpversion/utils.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="module-bumpversionutils">Module bumpversion.utils</h1>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="s s-Atom">import</span> <span class="s s-Atom">io</span>
+
+<span class="s s-Atom">import</span> <span class="s s-Atom">logging</span>
+
+<span class="s s-Atom">import</span> <span class="s s-Atom">os</span>
+
+<span class="s s-Atom">from</span> <span class="s s-Atom">argparse</span> <span class="s s-Atom">import</span> <span class="k">_</span><span class="nv">AppendAction</span>
+
+<span class="s s-Atom">from</span> <span class="s s-Atom">difflib</span> <span class="s s-Atom">import</span> <span class="s s-Atom">unified_diff</span>
+
+<span class="s s-Atom">from</span> <span class="s s-Atom">bumpversion</span><span class="p">.</span><span class="s s-Atom">exceptions</span> <span class="s s-Atom">import</span> <span class="nv">VersionNotFoundException</span>
+
+<span class="s s-Atom">logger</span> <span class="o">=</span> <span class="s s-Atom">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="k">__</span><span class="s s-Atom">name__</span><span class="p">)</span>
+
+<span class="s s-Atom">class</span> <span class="nv">DiscardDefaultIfSpecifiedAppendAction</span><span class="p">(</span><span class="k">_</span><span class="nv">AppendAction</span><span class="p">)</span><span class="o">:</span>
+
+    <span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Fixes bug http://bugs.python.org/issue16399 for &#39;append&#39; action</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="s s-Atom">def</span> <span class="k">__</span><span class="nf">call__</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">,</span> <span class="s s-Atom">parser</span><span class="p">,</span> <span class="s s-Atom">namespace</span><span class="p">,</span> <span class="nb">val</span><span class="s s-Atom">ues</span><span class="p">,</span> <span class="s s-Atom">option_string</span><span class="o">=</span><span class="nv">None</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s s-Atom">if</span> <span class="nf">getattr</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">,</span> <span class="s2">&quot;_discarded_default&quot;</span><span class="p">,</span> <span class="nv">None</span><span class="p">)</span> <span class="o">is</span> <span class="nv">None</span><span class="o">:</span>
+
+            <span class="nf">setattr</span><span class="p">(</span><span class="s s-Atom">namespace</span><span class="p">,</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">dest</span><span class="p">,</span> <span class="p">[])</span>
+
+            <span class="s s-Atom">self</span><span class="p">.</span><span class="k">_</span><span class="s s-Atom">discarded_default</span> <span class="o">=</span> <span class="nv">True</span>  <span class="s s-Atom">#</span> <span class="s s-Atom">pylint</span><span class="p">:</span> <span class="s s-Atom">disable</span><span class="o">=</span><span class="s s-Atom">attribute</span><span class="o">-</span><span class="s s-Atom">defined</span><span class="o">-</span><span class="s s-Atom">outside</span><span class="o">-</span><span class="s s-Atom">init</span>
+
+        <span class="nf">super</span><span class="p">().</span><span class="k">__</span><span class="nf">call__</span><span class="p">(</span><span class="s s-Atom">parser</span><span class="p">,</span> <span class="s s-Atom">namespace</span><span class="p">,</span> <span class="nb">val</span><span class="s s-Atom">ues</span><span class="p">,</span> <span class="s s-Atom">option_string</span><span class="o">=</span><span class="nv">None</span><span class="p">)</span>
+
+<span class="s s-Atom">def</span> <span class="nf">keyvaluestring</span><span class="p">(</span><span class="s s-Atom">d</span><span class="p">)</span><span class="o">:</span>
+
+    <span class="s s-Atom">return</span> <span class="s2">&quot;, &quot;</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s2">&quot;{}={}&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s s-Atom">k</span><span class="p">,</span> <span class="s s-Atom">v</span><span class="p">)</span> <span class="s s-Atom">for</span> <span class="s s-Atom">k</span><span class="p">,</span> <span class="s s-Atom">v</span> <span class="s s-Atom">in</span> <span class="nf">sorted</span><span class="p">(</span><span class="s s-Atom">d</span><span class="p">.</span><span class="nf">items</span><span class="p">()))</span>
+
+<span class="s s-Atom">def</span> <span class="nf">prefixed_environ</span><span class="p">()</span><span class="o">:</span>
+
+    <span class="s s-Atom">return</span> <span class="p">{</span><span class="s2">&quot;${}&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s s-Atom">key</span><span class="p">)</span><span class="o">:</span> <span class="nb">val</span><span class="s s-Atom">ue</span> <span class="s s-Atom">for</span> <span class="s s-Atom">key</span><span class="p">,</span> <span class="nb">val</span><span class="s s-Atom">ue</span> <span class="s s-Atom">in</span> <span class="s s-Atom">os</span><span class="p">.</span><span class="s s-Atom">environ</span><span class="p">.</span><span class="nf">items</span><span class="p">()}</span>
+
+<span class="s s-Atom">class</span> <span class="nv">ConfiguredFile</span><span class="o">:</span>
+
+    <span class="s s-Atom">def</span> <span class="k">__</span><span class="nf">init__</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">,</span> <span class="s s-Atom">path</span><span class="p">,</span> <span class="s s-Atom">versionconfig</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span> <span class="o">=</span> <span class="s s-Atom">path</span>
+
+        <span class="s s-Atom">self</span><span class="p">.</span><span class="k">_</span><span class="s s-Atom">versionconfig</span> <span class="o">=</span> <span class="s s-Atom">versionconfig</span>
+
+    <span class="s s-Atom">def</span> <span class="nf">should_contain_version</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">,</span> <span class="s s-Atom">version</span><span class="p">,</span> <span class="s s-Atom">context</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">        Raise VersionNotFound if the version number isn&#39;t present in this file.</span>
+
+<span class="s2">        Return normally if the version number is in fact present.</span>
+
+<span class="s2">        &quot;&quot;&quot;</span>
+
+        <span class="s s-Atom">context</span><span class="p">[</span><span class="s2">&quot;current_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="k">_</span><span class="s s-Atom">versionconfig</span><span class="p">.</span><span class="nf">serialize</span><span class="p">(</span><span class="s s-Atom">version</span><span class="p">,</span> <span class="s s-Atom">context</span><span class="p">)</span>
+
+        <span class="s s-Atom">search_expression</span> <span class="o">=</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="k">_</span><span class="s s-Atom">versionconfig</span><span class="p">.</span><span class="s s-Atom">search</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s s-Atom">**context</span><span class="p">)</span>
+
+        <span class="s s-Atom">if</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="nf">contains</span><span class="p">(</span><span class="s s-Atom">search_expression</span><span class="p">)</span><span class="o">:</span>
+
+            <span class="s s-Atom">return</span>
+
+        <span class="s s-Atom">#</span> <span class="s s-Atom">the</span> <span class="err">`</span><span class="s s-Atom">search</span><span class="err">`</span> <span class="s s-Atom">pattern</span> <span class="s s-Atom">did</span> <span class="o">not</span> <span class="s s-Atom">match</span><span class="p">,</span> <span class="s s-Atom">but</span> <span class="s s-Atom">the</span> <span class="s s-Atom">original</span> <span class="s s-Atom">supplied</span>
+
+        <span class="s s-Atom">#</span> <span class="s s-Atom">version</span> <span class="nf">number</span> <span class="p">(</span><span class="s s-Atom">representing</span> <span class="s s-Atom">the</span> <span class="s s-Atom">same</span> <span class="s s-Atom">version</span> <span class="s s-Atom">part</span> <span class="nb">val</span><span class="s s-Atom">ues</span><span class="p">)</span> <span class="s s-Atom">might</span>
+
+        <span class="s s-Atom">#</span> <span class="s s-Atom">match</span> <span class="s s-Atom">instead</span><span class="p">.</span>
+
+        <span class="s s-Atom">#</span> <span class="s s-Atom">check</span> <span class="s s-Atom">whether</span> <span class="err">`</span><span class="s s-Atom">search</span><span class="err">`</span> <span class="s s-Atom">isn&#39;t customized, i.e. should match only</span>
+
+<span class="s s-Atom">        # very specific parts of the file</span>
+
+<span class="s s-Atom">        search_pattern_is_default = self._versionconfig.search == &quot;{current_version}&quot;</span>
+
+<span class="s s-Atom">        if search_pattern_is_default and self.contains(version.original):</span>
+
+<span class="s s-Atom">            # original version is present and we&#39;re</span> <span class="o">not</span> <span class="s s-Atom">looking</span> <span class="s s-Atom">for</span> <span class="s s-Atom">something</span>
+
+            <span class="s s-Atom">#</span> <span class="s s-Atom">more</span> <span class="s s-Atom">specific</span> <span class="s s-Atom">-&gt;</span> <span class="s s-Atom">this</span> <span class="o">is</span> <span class="s s-Atom">accepted</span> <span class="s s-Atom">as</span> <span class="s s-Atom">a</span> <span class="s s-Atom">match</span>
+
+            <span class="s s-Atom">return</span>
+
+        <span class="s s-Atom">#</span> <span class="s s-Atom">version</span> <span class="o">not</span> <span class="s s-Atom">found</span>
+
+        <span class="s s-Atom">raise</span> <span class="nv">VersionNotFoundException</span><span class="p">(</span><span class="s2">&quot;Did not find &#39;{}&#39; in file: &#39;{}&#39;&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s s-Atom">search_expression</span><span class="p">,</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">))</span>
+
+    <span class="s s-Atom">def</span> <span class="nf">contains</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">,</span> <span class="s s-Atom">search</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s s-Atom">if</span> <span class="o">not</span> <span class="s s-Atom">search</span><span class="p">:</span>
+
+            <span class="s s-Atom">return</span> <span class="nv">False</span>
+
+        <span class="s s-Atom">with</span> <span class="nf">open</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">,</span> <span class="s s-Atom">encoding=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="s s-Atom">as</span> <span class="s s-Atom">f</span><span class="p">:</span>
+
+            <span class="s s-Atom">search_lines</span> <span class="o">=</span> <span class="s s-Atom">search</span><span class="p">.</span><span class="nf">splitlines</span><span class="p">()</span>
+
+            <span class="s s-Atom">lookbehind</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="s s-Atom">for</span> <span class="s s-Atom">lineno</span><span class="p">,</span> <span class="s s-Atom">line</span> <span class="s s-Atom">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="s s-Atom">f</span><span class="p">.</span><span class="nf">readlines</span><span class="p">())</span><span class="o">:</span>
+
+                <span class="s s-Atom">lookbehind</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="s s-Atom">line</span><span class="p">.</span><span class="nf">rstrip</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span><span class="p">))</span>
+
+                <span class="s s-Atom">if</span> <span class="nf">len</span><span class="p">(</span><span class="s s-Atom">lookbehind</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nf">len</span><span class="p">(</span><span class="s s-Atom">search_lines</span><span class="p">)</span><span class="o">:</span>
+
+                    <span class="s s-Atom">lookbehind</span> <span class="o">=</span> <span class="s s-Atom">lookbehind</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="p">]</span>
+
+                <span class="nf">if</span> <span class="p">(</span>
+
+                    <span class="s s-Atom">search_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="s s-Atom">in</span> <span class="s s-Atom">lookbehind</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+                    <span class="s s-Atom">and</span> <span class="s s-Atom">search_lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="s s-Atom">in</span> <span class="s s-Atom">lookbehind</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                    <span class="s s-Atom">and</span> <span class="s s-Atom">search_lines</span><span class="p">[</span><span class="mi">1</span><span class="o">:-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s s-Atom">lookbehind</span><span class="p">[</span><span class="mi">1</span><span class="o">:-</span><span class="mi">1</span><span class="p">]</span>
+
+                <span class="p">)</span><span class="o">:</span>
+
+                    <span class="s s-Atom">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span>
+
+                        <span class="s2">&quot;Found &#39;%s&#39; in %s at line %s: %s&quot;</span><span class="p">,</span>
+
+                        <span class="s s-Atom">search</span><span class="p">,</span>
+
+                        <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">,</span>
+
+                        <span class="s s-Atom">lineno</span> <span class="o">-</span> <span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="s s-Atom">lookbehind</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+
+                        <span class="s s-Atom">line</span><span class="p">.</span><span class="nf">rstrip</span><span class="p">(),</span>
+
+                    <span class="p">)</span>
+
+                    <span class="s s-Atom">return</span> <span class="nv">True</span>
+
+        <span class="s s-Atom">return</span> <span class="nv">False</span>
+
+    <span class="s s-Atom">def</span> <span class="nf">replace</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">,</span> <span class="s s-Atom">current_version</span><span class="p">,</span> <span class="s s-Atom">new_version</span><span class="p">,</span> <span class="s s-Atom">context</span><span class="p">,</span> <span class="s s-Atom">dry_run</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s s-Atom">with</span> <span class="nf">open</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">,</span> <span class="s s-Atom">encoding=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="s s-Atom">as</span> <span class="s s-Atom">f</span><span class="p">:</span>
+
+            <span class="s s-Atom">file_content_before</span> <span class="o">=</span> <span class="s s-Atom">f</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span>
+
+            <span class="s s-Atom">file_new_lines</span> <span class="o">=</span> <span class="s s-Atom">f</span><span class="p">.</span><span class="s s-Atom">newlines</span>
+
+        <span class="s s-Atom">context</span><span class="p">[</span><span class="s2">&quot;current_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="k">_</span><span class="s s-Atom">versionconfig</span><span class="p">.</span><span class="nf">serialize</span><span class="p">(</span><span class="s s-Atom">current_version</span><span class="p">,</span> <span class="s s-Atom">context</span><span class="p">)</span>
+
+        <span class="s s-Atom">context</span><span class="p">[</span><span class="s2">&quot;new_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="k">_</span><span class="s s-Atom">versionconfig</span><span class="p">.</span><span class="nf">serialize</span><span class="p">(</span><span class="s s-Atom">new_version</span><span class="p">,</span> <span class="s s-Atom">context</span><span class="p">)</span>
+
+        <span class="s s-Atom">search_for</span> <span class="o">=</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="k">_</span><span class="s s-Atom">versionconfig</span><span class="p">.</span><span class="s s-Atom">search</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s s-Atom">**context</span><span class="p">)</span>
+
+        <span class="s s-Atom">replace_with</span> <span class="o">=</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="k">_</span><span class="s s-Atom">versionconfig</span><span class="p">.</span><span class="s s-Atom">replace</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s s-Atom">**context</span><span class="p">)</span>
+
+        <span class="s s-Atom">file_content_after</span> <span class="o">=</span> <span class="s s-Atom">file_content_before</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="s s-Atom">search_for</span><span class="p">,</span> <span class="s s-Atom">replace_with</span><span class="p">)</span>
+
+        <span class="s s-Atom">if</span> <span class="s s-Atom">file_content_before</span> <span class="o">==</span> <span class="s s-Atom">file_content_after</span><span class="o">:</span>
+
+            <span class="s s-Atom">#</span> <span class="nv">TODO</span> <span class="s s-Atom">expose</span> <span class="s s-Atom">this</span> <span class="s s-Atom">to</span> <span class="s s-Atom">be</span> <span class="s s-Atom">configurable</span>
+
+            <span class="s s-Atom">file_content_after</span> <span class="o">=</span> <span class="s s-Atom">file_content_before</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="s s-Atom">current_version</span><span class="p">.</span><span class="s s-Atom">original</span><span class="p">,</span> <span class="s s-Atom">replace_with</span><span class="p">)</span>
+
+        <span class="s s-Atom">if</span> <span class="s s-Atom">file_content_before</span> <span class="p">!</span><span class="o">=</span> <span class="s s-Atom">file_content_after</span><span class="o">:</span>
+
+            <span class="s s-Atom">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">&quot;%s file %s:&quot;</span><span class="p">,</span> <span class="s2">&quot;Would change&quot;</span> <span class="s s-Atom">if</span> <span class="s s-Atom">dry_run</span> <span class="s s-Atom">else</span> <span class="s2">&quot;Changing&quot;</span><span class="p">,</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">)</span>
+
+            <span class="s s-Atom">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span>
+
+                <span class="s2">&quot;\n&quot;</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span>
+
+                    <span class="nf">list</span><span class="p">(</span>
+
+                        <span class="nf">unified_diff</span><span class="p">(</span>
+
+                            <span class="s s-Atom">file_content_before</span><span class="p">.</span><span class="nf">splitlines</span><span class="p">(),</span>
+
+                            <span class="s s-Atom">file_content_after</span><span class="p">.</span><span class="nf">splitlines</span><span class="p">(),</span>
+
+                            <span class="s s-Atom">lineterm=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+
+                            <span class="s s-Atom">fromfile=</span><span class="s2">&quot;a/&quot;</span> <span class="o">+</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">,</span>
+
+                            <span class="s s-Atom">tofile=</span><span class="s2">&quot;b/&quot;</span> <span class="o">+</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">,</span>
+
+                        <span class="p">)</span>
+
+                    <span class="p">)</span>
+
+                <span class="p">)</span>
+
+            <span class="p">)</span>
+
+        <span class="s s-Atom">else</span><span class="p">:</span>
+
+            <span class="s s-Atom">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">&quot;%s file %s&quot;</span><span class="p">,</span> <span class="s2">&quot;Would not change&quot;</span> <span class="s s-Atom">if</span> <span class="s s-Atom">dry_run</span> <span class="s s-Atom">else</span> <span class="s2">&quot;Not changing&quot;</span><span class="p">,</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">)</span>
+
+        <span class="s s-Atom">if</span> <span class="o">not</span> <span class="s s-Atom">dry_run</span><span class="o">:</span>
+
+            <span class="s s-Atom">with</span> <span class="nf">open</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">,</span> <span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="s s-Atom">encoding=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="s s-Atom">newline</span><span class="o">=</span><span class="s s-Atom">file_new_lines</span><span class="p">)</span> <span class="s s-Atom">as</span> <span class="s s-Atom">f</span><span class="p">:</span>
+
+                <span class="s s-Atom">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s s-Atom">file_content_after</span><span class="p">)</span>
+
+    <span class="s s-Atom">def</span> <span class="k">__</span><span class="nf">str__</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s s-Atom">return</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span>
+
+    <span class="s s-Atom">def</span> <span class="k">__</span><span class="nf">repr__</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s s-Atom">return</span> <span class="s2">&quot;&lt;bumpversion.ConfiguredFile:{}&gt;&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h2 id="variables">Variables</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">logger</span>
+</code></pre></div>
+
+<h2 id="functions">Functions</h2>
+<h3 id="keyvaluestring">keyvaluestring</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">keyvaluestring</span><span class="p">(</span>
+    <span class="n">d</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="nv">def</span><span class="w"> </span><span class="nv">keyvaluestring</span><span class="ss">(</span><span class="nv">d</span><span class="ss">)</span>:
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;, &quot;</span>.<span class="nv">join</span><span class="ss">(</span><span class="s2">&quot;{}={}&quot;</span>.<span class="nv">format</span><span class="ss">(</span><span class="nv">k</span>,<span class="w"> </span><span class="nv">v</span><span class="ss">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">k</span>,<span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">sorted</span><span class="ss">(</span><span class="nv">d</span>.<span class="nv">items</span><span class="ss">()))</span>
+</code></pre></div>
+
+</details>
+<h3 id="prefixed_environ">prefixed_environ</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">prefixed_environ</span><span class="p">(</span>
+
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>def<span class="w"> </span>prefixed_environ():
+
+<span class="w">    </span>return<span class="w"> </span>{&quot;<span class="cp">${</span><span class="p">}</span><span class="s2">&quot;.format(key): value for key, value in os.environ.items()</span><span class="cp">}</span>
+</code></pre></div>
+
+</details>
+<h2 id="classes">Classes</h2>
+<h3 id="configuredfile">ConfiguredFile</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">ConfiguredFile</span><span class="p">(</span>
+    <span class="n">path</span><span class="p">,</span>
+    <span class="n">versionconfig</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="s s-Atom">class</span> <span class="nv">ConfiguredFile</span><span class="o">:</span>
+
+    <span class="s s-Atom">def</span> <span class="k">__</span><span class="nf">init__</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">,</span> <span class="s s-Atom">path</span><span class="p">,</span> <span class="s s-Atom">versionconfig</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span> <span class="o">=</span> <span class="s s-Atom">path</span>
+
+        <span class="s s-Atom">self</span><span class="p">.</span><span class="k">_</span><span class="s s-Atom">versionconfig</span> <span class="o">=</span> <span class="s s-Atom">versionconfig</span>
+
+    <span class="s s-Atom">def</span> <span class="nf">should_contain_version</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">,</span> <span class="s s-Atom">version</span><span class="p">,</span> <span class="s s-Atom">context</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">        Raise VersionNotFound if the version number isn&#39;t present in this file.</span>
+
+<span class="s2">        Return normally if the version number is in fact present.</span>
+
+<span class="s2">        &quot;&quot;&quot;</span>
+
+        <span class="s s-Atom">context</span><span class="p">[</span><span class="s2">&quot;current_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="k">_</span><span class="s s-Atom">versionconfig</span><span class="p">.</span><span class="nf">serialize</span><span class="p">(</span><span class="s s-Atom">version</span><span class="p">,</span> <span class="s s-Atom">context</span><span class="p">)</span>
+
+        <span class="s s-Atom">search_expression</span> <span class="o">=</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="k">_</span><span class="s s-Atom">versionconfig</span><span class="p">.</span><span class="s s-Atom">search</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s s-Atom">**context</span><span class="p">)</span>
+
+        <span class="s s-Atom">if</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="nf">contains</span><span class="p">(</span><span class="s s-Atom">search_expression</span><span class="p">)</span><span class="o">:</span>
+
+            <span class="s s-Atom">return</span>
+
+        <span class="s s-Atom">#</span> <span class="s s-Atom">the</span> <span class="err">`</span><span class="s s-Atom">search</span><span class="err">`</span> <span class="s s-Atom">pattern</span> <span class="s s-Atom">did</span> <span class="o">not</span> <span class="s s-Atom">match</span><span class="p">,</span> <span class="s s-Atom">but</span> <span class="s s-Atom">the</span> <span class="s s-Atom">original</span> <span class="s s-Atom">supplied</span>
+
+        <span class="s s-Atom">#</span> <span class="s s-Atom">version</span> <span class="nf">number</span> <span class="p">(</span><span class="s s-Atom">representing</span> <span class="s s-Atom">the</span> <span class="s s-Atom">same</span> <span class="s s-Atom">version</span> <span class="s s-Atom">part</span> <span class="nb">val</span><span class="s s-Atom">ues</span><span class="p">)</span> <span class="s s-Atom">might</span>
+
+        <span class="s s-Atom">#</span> <span class="s s-Atom">match</span> <span class="s s-Atom">instead</span><span class="p">.</span>
+
+        <span class="s s-Atom">#</span> <span class="s s-Atom">check</span> <span class="s s-Atom">whether</span> <span class="err">`</span><span class="s s-Atom">search</span><span class="err">`</span> <span class="s s-Atom">isn&#39;t customized, i.e. should match only</span>
+
+<span class="s s-Atom">        # very specific parts of the file</span>
+
+<span class="s s-Atom">        search_pattern_is_default = self._versionconfig.search == &quot;{current_version}&quot;</span>
+
+<span class="s s-Atom">        if search_pattern_is_default and self.contains(version.original):</span>
+
+<span class="s s-Atom">            # original version is present and we&#39;re</span> <span class="o">not</span> <span class="s s-Atom">looking</span> <span class="s s-Atom">for</span> <span class="s s-Atom">something</span>
+
+            <span class="s s-Atom">#</span> <span class="s s-Atom">more</span> <span class="s s-Atom">specific</span> <span class="s s-Atom">-&gt;</span> <span class="s s-Atom">this</span> <span class="o">is</span> <span class="s s-Atom">accepted</span> <span class="s s-Atom">as</span> <span class="s s-Atom">a</span> <span class="s s-Atom">match</span>
+
+            <span class="s s-Atom">return</span>
+
+        <span class="s s-Atom">#</span> <span class="s s-Atom">version</span> <span class="o">not</span> <span class="s s-Atom">found</span>
+
+        <span class="s s-Atom">raise</span> <span class="nv">VersionNotFoundException</span><span class="p">(</span><span class="s2">&quot;Did not find &#39;{}&#39; in file: &#39;{}&#39;&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s s-Atom">search_expression</span><span class="p">,</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">))</span>
+
+    <span class="s s-Atom">def</span> <span class="nf">contains</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">,</span> <span class="s s-Atom">search</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s s-Atom">if</span> <span class="o">not</span> <span class="s s-Atom">search</span><span class="p">:</span>
+
+            <span class="s s-Atom">return</span> <span class="nv">False</span>
+
+        <span class="s s-Atom">with</span> <span class="nf">open</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">,</span> <span class="s s-Atom">encoding=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="s s-Atom">as</span> <span class="s s-Atom">f</span><span class="p">:</span>
+
+            <span class="s s-Atom">search_lines</span> <span class="o">=</span> <span class="s s-Atom">search</span><span class="p">.</span><span class="nf">splitlines</span><span class="p">()</span>
+
+            <span class="s s-Atom">lookbehind</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="s s-Atom">for</span> <span class="s s-Atom">lineno</span><span class="p">,</span> <span class="s s-Atom">line</span> <span class="s s-Atom">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="s s-Atom">f</span><span class="p">.</span><span class="nf">readlines</span><span class="p">())</span><span class="o">:</span>
+
+                <span class="s s-Atom">lookbehind</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="s s-Atom">line</span><span class="p">.</span><span class="nf">rstrip</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span><span class="p">))</span>
+
+                <span class="s s-Atom">if</span> <span class="nf">len</span><span class="p">(</span><span class="s s-Atom">lookbehind</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nf">len</span><span class="p">(</span><span class="s s-Atom">search_lines</span><span class="p">)</span><span class="o">:</span>
+
+                    <span class="s s-Atom">lookbehind</span> <span class="o">=</span> <span class="s s-Atom">lookbehind</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="p">]</span>
+
+                <span class="nf">if</span> <span class="p">(</span>
+
+                    <span class="s s-Atom">search_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="s s-Atom">in</span> <span class="s s-Atom">lookbehind</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+                    <span class="s s-Atom">and</span> <span class="s s-Atom">search_lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="s s-Atom">in</span> <span class="s s-Atom">lookbehind</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                    <span class="s s-Atom">and</span> <span class="s s-Atom">search_lines</span><span class="p">[</span><span class="mi">1</span><span class="o">:-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s s-Atom">lookbehind</span><span class="p">[</span><span class="mi">1</span><span class="o">:-</span><span class="mi">1</span><span class="p">]</span>
+
+                <span class="p">)</span><span class="o">:</span>
+
+                    <span class="s s-Atom">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span>
+
+                        <span class="s2">&quot;Found &#39;%s&#39; in %s at line %s: %s&quot;</span><span class="p">,</span>
+
+                        <span class="s s-Atom">search</span><span class="p">,</span>
+
+                        <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">,</span>
+
+                        <span class="s s-Atom">lineno</span> <span class="o">-</span> <span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="s s-Atom">lookbehind</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+
+                        <span class="s s-Atom">line</span><span class="p">.</span><span class="nf">rstrip</span><span class="p">(),</span>
+
+                    <span class="p">)</span>
+
+                    <span class="s s-Atom">return</span> <span class="nv">True</span>
+
+        <span class="s s-Atom">return</span> <span class="nv">False</span>
+
+    <span class="s s-Atom">def</span> <span class="nf">replace</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">,</span> <span class="s s-Atom">current_version</span><span class="p">,</span> <span class="s s-Atom">new_version</span><span class="p">,</span> <span class="s s-Atom">context</span><span class="p">,</span> <span class="s s-Atom">dry_run</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s s-Atom">with</span> <span class="nf">open</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">,</span> <span class="s s-Atom">encoding=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="s s-Atom">as</span> <span class="s s-Atom">f</span><span class="p">:</span>
+
+            <span class="s s-Atom">file_content_before</span> <span class="o">=</span> <span class="s s-Atom">f</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span>
+
+            <span class="s s-Atom">file_new_lines</span> <span class="o">=</span> <span class="s s-Atom">f</span><span class="p">.</span><span class="s s-Atom">newlines</span>
+
+        <span class="s s-Atom">context</span><span class="p">[</span><span class="s2">&quot;current_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="k">_</span><span class="s s-Atom">versionconfig</span><span class="p">.</span><span class="nf">serialize</span><span class="p">(</span><span class="s s-Atom">current_version</span><span class="p">,</span> <span class="s s-Atom">context</span><span class="p">)</span>
+
+        <span class="s s-Atom">context</span><span class="p">[</span><span class="s2">&quot;new_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="k">_</span><span class="s s-Atom">versionconfig</span><span class="p">.</span><span class="nf">serialize</span><span class="p">(</span><span class="s s-Atom">new_version</span><span class="p">,</span> <span class="s s-Atom">context</span><span class="p">)</span>
+
+        <span class="s s-Atom">search_for</span> <span class="o">=</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="k">_</span><span class="s s-Atom">versionconfig</span><span class="p">.</span><span class="s s-Atom">search</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s s-Atom">**context</span><span class="p">)</span>
+
+        <span class="s s-Atom">replace_with</span> <span class="o">=</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="k">_</span><span class="s s-Atom">versionconfig</span><span class="p">.</span><span class="s s-Atom">replace</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s s-Atom">**context</span><span class="p">)</span>
+
+        <span class="s s-Atom">file_content_after</span> <span class="o">=</span> <span class="s s-Atom">file_content_before</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="s s-Atom">search_for</span><span class="p">,</span> <span class="s s-Atom">replace_with</span><span class="p">)</span>
+
+        <span class="s s-Atom">if</span> <span class="s s-Atom">file_content_before</span> <span class="o">==</span> <span class="s s-Atom">file_content_after</span><span class="o">:</span>
+
+            <span class="s s-Atom">#</span> <span class="nv">TODO</span> <span class="s s-Atom">expose</span> <span class="s s-Atom">this</span> <span class="s s-Atom">to</span> <span class="s s-Atom">be</span> <span class="s s-Atom">configurable</span>
+
+            <span class="s s-Atom">file_content_after</span> <span class="o">=</span> <span class="s s-Atom">file_content_before</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="s s-Atom">current_version</span><span class="p">.</span><span class="s s-Atom">original</span><span class="p">,</span> <span class="s s-Atom">replace_with</span><span class="p">)</span>
+
+        <span class="s s-Atom">if</span> <span class="s s-Atom">file_content_before</span> <span class="p">!</span><span class="o">=</span> <span class="s s-Atom">file_content_after</span><span class="o">:</span>
+
+            <span class="s s-Atom">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">&quot;%s file %s:&quot;</span><span class="p">,</span> <span class="s2">&quot;Would change&quot;</span> <span class="s s-Atom">if</span> <span class="s s-Atom">dry_run</span> <span class="s s-Atom">else</span> <span class="s2">&quot;Changing&quot;</span><span class="p">,</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">)</span>
+
+            <span class="s s-Atom">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span>
+
+                <span class="s2">&quot;\n&quot;</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span>
+
+                    <span class="nf">list</span><span class="p">(</span>
+
+                        <span class="nf">unified_diff</span><span class="p">(</span>
+
+                            <span class="s s-Atom">file_content_before</span><span class="p">.</span><span class="nf">splitlines</span><span class="p">(),</span>
+
+                            <span class="s s-Atom">file_content_after</span><span class="p">.</span><span class="nf">splitlines</span><span class="p">(),</span>
+
+                            <span class="s s-Atom">lineterm=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+
+                            <span class="s s-Atom">fromfile=</span><span class="s2">&quot;a/&quot;</span> <span class="o">+</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">,</span>
+
+                            <span class="s s-Atom">tofile=</span><span class="s2">&quot;b/&quot;</span> <span class="o">+</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">,</span>
+
+                        <span class="p">)</span>
+
+                    <span class="p">)</span>
+
+                <span class="p">)</span>
+
+            <span class="p">)</span>
+
+        <span class="s s-Atom">else</span><span class="p">:</span>
+
+            <span class="s s-Atom">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">&quot;%s file %s&quot;</span><span class="p">,</span> <span class="s2">&quot;Would not change&quot;</span> <span class="s s-Atom">if</span> <span class="s s-Atom">dry_run</span> <span class="s s-Atom">else</span> <span class="s2">&quot;Not changing&quot;</span><span class="p">,</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">)</span>
+
+        <span class="s s-Atom">if</span> <span class="o">not</span> <span class="s s-Atom">dry_run</span><span class="o">:</span>
+
+            <span class="s s-Atom">with</span> <span class="nf">open</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">,</span> <span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="s s-Atom">encoding=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="s s-Atom">newline</span><span class="o">=</span><span class="s s-Atom">file_new_lines</span><span class="p">)</span> <span class="s s-Atom">as</span> <span class="s s-Atom">f</span><span class="p">:</span>
+
+                <span class="s s-Atom">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s s-Atom">file_content_after</span><span class="p">)</span>
+
+    <span class="s s-Atom">def</span> <span class="k">__</span><span class="nf">str__</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s s-Atom">return</span> <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span>
+
+    <span class="s s-Atom">def</span> <span class="k">__</span><span class="nf">repr__</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s s-Atom">return</span> <span class="s2">&quot;&lt;bumpversion.ConfiguredFile:{}&gt;&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<hr />
+<h4 id="methods">Methods</h4>
+<h4 id="contains">contains</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">contains</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">search</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>    <span class="s s-Atom">def</span> <span class="nf">contains</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">,</span> <span class="s s-Atom">search</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s s-Atom">if</span> <span class="o">not</span> <span class="s s-Atom">search</span><span class="p">:</span>
+
+            <span class="s s-Atom">return</span> <span class="nv">False</span>
+
+        <span class="s s-Atom">with</span> <span class="nf">open</span><span class="p">(</span><span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">,</span> <span class="s s-Atom">encoding=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="s s-Atom">as</span> <span class="s s-Atom">f</span><span class="p">:</span>
+
+            <span class="s s-Atom">search_lines</span> <span class="o">=</span> <span class="s s-Atom">search</span><span class="p">.</span><span class="nf">splitlines</span><span class="p">()</span>
+
+            <span class="s s-Atom">lookbehind</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="s s-Atom">for</span> <span class="s s-Atom">lineno</span><span class="p">,</span> <span class="s s-Atom">line</span> <span class="s s-Atom">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="s s-Atom">f</span><span class="p">.</span><span class="nf">readlines</span><span class="p">())</span><span class="o">:</span>
+
+                <span class="s s-Atom">lookbehind</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="s s-Atom">line</span><span class="p">.</span><span class="nf">rstrip</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span><span class="p">))</span>
+
+                <span class="s s-Atom">if</span> <span class="nf">len</span><span class="p">(</span><span class="s s-Atom">lookbehind</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nf">len</span><span class="p">(</span><span class="s s-Atom">search_lines</span><span class="p">)</span><span class="o">:</span>
+
+                    <span class="s s-Atom">lookbehind</span> <span class="o">=</span> <span class="s s-Atom">lookbehind</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="p">]</span>
+
+                <span class="nf">if</span> <span class="p">(</span>
+
+                    <span class="s s-Atom">search_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="s s-Atom">in</span> <span class="s s-Atom">lookbehind</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+                    <span class="s s-Atom">and</span> <span class="s s-Atom">search_lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="s s-Atom">in</span> <span class="s s-Atom">lookbehind</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                    <span class="s s-Atom">and</span> <span class="s s-Atom">search_lines</span><span class="p">[</span><span class="mi">1</span><span class="o">:-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s s-Atom">lookbehind</span><span class="p">[</span><span class="mi">1</span><span class="o">:-</span><span class="mi">1</span><span class="p">]</span>
+
+                <span class="p">)</span><span class="o">:</span>
+
+                    <span class="s s-Atom">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span>
+
+                        <span class="s2">&quot;Found &#39;%s&#39; in %s at line %s: %s&quot;</span><span class="p">,</span>
+
+                        <span class="s s-Atom">search</span><span class="p">,</span>
+
+                        <span class="s s-Atom">self</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">,</span>
+
+                        <span class="s s-Atom">lineno</span> <span class="o">-</span> <span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="s s-Atom">lookbehind</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+
+                        <span class="s s-Atom">line</span><span class="p">.</span><span class="nf">rstrip</span><span class="p">(),</span>
+
+                    <span class="p">)</span>
+
+                    <span class="s s-Atom">return</span> <span class="nv">True</span>
+
+        <span class="s s-Atom">return</span> <span class="nv">False</span>
+</code></pre></div>
+
+</details>
+<h4 id="replace">replace</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">replace</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">current_version</span><span class="p">,</span>
+    <span class="n">new_version</span><span class="p">,</span>
+    <span class="n">context</span><span class="p">,</span>
+    <span class="n">dry_run</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">def</span><span class="w"> </span><span class="nv">replace</span><span class="ss">(</span><span class="nv">self</span>,<span class="w"> </span><span class="nv">current_version</span>,<span class="w"> </span><span class="nv">new_version</span>,<span class="w"> </span><span class="nv">context</span>,<span class="w"> </span><span class="nv">dry_run</span><span class="ss">)</span>:
+
+<span class="w">        </span><span class="nv">with</span><span class="w"> </span><span class="nv">open</span><span class="ss">(</span><span class="nv">self</span>.<span class="nv">path</span>,<span class="w"> </span><span class="s2">&quot;rt&quot;</span>,<span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="ss">)</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">f</span>:
+
+<span class="w">            </span><span class="nv">file_content_before</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">f</span>.<span class="nv">read</span><span class="ss">()</span>
+
+<span class="w">            </span><span class="nv">file_new_lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">f</span>.<span class="nv">newlines</span>
+
+<span class="w">        </span><span class="nv">context</span>[<span class="s2">&quot;current_version&quot;</span>]<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span>.<span class="nv">_versionconfig</span>.<span class="nv">serialize</span><span class="ss">(</span><span class="nv">current_version</span>,<span class="w"> </span><span class="nv">context</span><span class="ss">)</span>
+
+<span class="w">        </span><span class="nv">context</span>[<span class="s2">&quot;new_version&quot;</span>]<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span>.<span class="nv">_versionconfig</span>.<span class="nv">serialize</span><span class="ss">(</span><span class="nv">new_version</span>,<span class="w"> </span><span class="nv">context</span><span class="ss">)</span>
+
+<span class="w">        </span><span class="nv">search_for</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span>.<span class="nv">_versionconfig</span>.<span class="nv">search</span>.<span class="nv">format</span><span class="ss">(</span><span class="o">**</span><span class="nv">context</span><span class="ss">)</span>
+
+<span class="w">        </span><span class="nv">replace_with</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span>.<span class="nv">_versionconfig</span>.<span class="nv">replace</span>.<span class="nv">format</span><span class="ss">(</span><span class="o">**</span><span class="nv">context</span><span class="ss">)</span>
+
+<span class="w">        </span><span class="nv">file_content_after</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">file_content_before</span>.<span class="nv">replace</span><span class="ss">(</span><span class="nv">search_for</span>,<span class="w"> </span><span class="nv">replace_with</span><span class="ss">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nv">file_content_before</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">file_content_after</span>:
+
+<span class="w">            </span>#<span class="w"> </span><span class="nv">TODO</span><span class="w"> </span><span class="nv">expose</span><span class="w"> </span><span class="nv">this</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">configurable</span>
+
+<span class="w">            </span><span class="nv">file_content_after</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">file_content_before</span>.<span class="nv">replace</span><span class="ss">(</span><span class="nv">current_version</span>.<span class="nv">original</span>,<span class="w"> </span><span class="nv">replace_with</span><span class="ss">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nv">file_content_before</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nv">file_content_after</span>:
+
+<span class="w">            </span><span class="nv">logger</span>.<span class="nv">info</span><span class="ss">(</span><span class="s2">&quot;%s file %s:&quot;</span>,<span class="w"> </span><span class="s2">&quot;Would change&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">dry_run</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;Changing&quot;</span>,<span class="w"> </span><span class="nv">self</span>.<span class="nv">path</span><span class="ss">)</span>
+
+<span class="w">            </span><span class="nv">logger</span>.<span class="nv">info</span><span class="ss">(</span>
+
+<span class="w">                </span><span class="s2">&quot;\n&quot;</span>.<span class="nv">join</span><span class="ss">(</span>
+
+<span class="w">                    </span><span class="nv">list</span><span class="ss">(</span>
+
+<span class="w">                        </span><span class="nv">unified_diff</span><span class="ss">(</span>
+
+<span class="w">                            </span><span class="nv">file_content_before</span>.<span class="nv">splitlines</span><span class="ss">()</span>,
+
+<span class="w">                            </span><span class="nv">file_content_after</span>.<span class="nv">splitlines</span><span class="ss">()</span>,
+
+<span class="w">                            </span><span class="nv">lineterm</span><span class="o">=</span><span class="s2">&quot;&quot;</span>,
+
+<span class="w">                            </span><span class="nv">fromfile</span><span class="o">=</span><span class="s2">&quot;a/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">self</span>.<span class="nv">path</span>,
+
+<span class="w">                            </span><span class="nv">tofile</span><span class="o">=</span><span class="s2">&quot;b/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">self</span>.<span class="nv">path</span>,
+
+<span class="w">                        </span><span class="ss">)</span>
+
+<span class="w">                    </span><span class="ss">)</span>
+
+<span class="w">                </span><span class="ss">)</span>
+
+<span class="w">            </span><span class="ss">)</span>
+
+<span class="w">        </span><span class="k">else</span>:
+
+<span class="w">            </span><span class="nv">logger</span>.<span class="nv">info</span><span class="ss">(</span><span class="s2">&quot;%s file %s&quot;</span>,<span class="w"> </span><span class="s2">&quot;Would not change&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">dry_run</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;Not changing&quot;</span>,<span class="w"> </span><span class="nv">self</span>.<span class="nv">path</span><span class="ss">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">dry_run</span>:
+
+<span class="w">            </span><span class="nv">with</span><span class="w"> </span><span class="nv">open</span><span class="ss">(</span><span class="nv">self</span>.<span class="nv">path</span>,<span class="w"> </span><span class="s2">&quot;wt&quot;</span>,<span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>,<span class="w"> </span><span class="nv">newline</span><span class="o">=</span><span class="nv">file_new_lines</span><span class="ss">)</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">f</span>:
+
+<span class="w">                </span><span class="nv">f</span>.<span class="nv">write</span><span class="ss">(</span><span class="nv">file_content_after</span><span class="ss">)</span>
+</code></pre></div>
+
+</details>
+<h4 id="should_contain_version">should_contain_version</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">should_contain_version</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">version</span><span class="p">,</span>
+    <span class="n">context</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Raise VersionNotFound if the version number isn't present in this file.</p>
+<p>Return normally if the version number is in fact present.</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">should_contain_version</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="k">context</span><span class="p">)</span><span class="o">:</span>
+
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span>
+
+<span class="s2">        Raise VersionNotFound if the version number isn&#39;t present in this file.</span>
+
+<span class="s2">        Return normally if the version number is in fact present.</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+
+<span class="w">        </span><span class="k">context</span><span class="err">[</span><span class="s2">&quot;current_version&quot;</span><span class="err">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">_versionconfig</span><span class="p">.</span><span class="n">serialize</span><span class="p">(</span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="k">context</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">search_expression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">_versionconfig</span><span class="p">.</span><span class="n">search</span><span class="p">.</span><span class="k">format</span><span class="p">(</span><span class="o">**</span><span class="k">context</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="k">contains</span><span class="p">(</span><span class="n">search_expression</span><span class="p">)</span><span class="o">:</span>
+
+<span class="w">            </span><span class="k">return</span>
+
+<span class="w">        </span><span class="c1"># the `search` pattern did not match, but the original supplied</span>
+
+<span class="w">        </span><span class="c1"># version number (representing the same version part values) might</span>
+
+<span class="w">        </span><span class="c1"># match instead.</span>
+
+<span class="w">        </span><span class="c1"># check whether `search` isn&#39;t customized, i.e. should match only</span>
+
+<span class="w">        </span><span class="c1"># very specific parts of the file</span>
+
+<span class="w">        </span><span class="n">search_pattern_is_default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">_versionconfig</span><span class="p">.</span><span class="n">search</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;{current_version}&quot;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">search_pattern_is_default</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="k">contains</span><span class="p">(</span><span class="n">version</span><span class="p">.</span><span class="n">original</span><span class="p">)</span><span class="o">:</span>
+
+<span class="w">            </span><span class="c1"># original version is present and we&#39;re not looking for something</span>
+
+<span class="w">            </span><span class="c1"># more specific -&gt; this is accepted as a match</span>
+
+<span class="w">            </span><span class="k">return</span>
+
+<span class="w">        </span><span class="c1"># version not found</span>
+
+<span class="w">        </span><span class="n">raise</span><span class="w"> </span><span class="n">VersionNotFoundException</span><span class="p">(</span><span class="s2">&quot;Did not find &#39;{}&#39; in file: &#39;{}&#39;&quot;</span><span class="p">.</span><span class="k">format</span><span class="p">(</span><span class="n">search_expression</span><span class="p">,</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="k">path</span><span class="p">))</span>
+</code></pre></div>
+
+</details>
+<h3 id="discarddefaultifspecifiedappendaction">DiscardDefaultIfSpecifiedAppendAction</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">DiscardDefaultIfSpecifiedAppendAction</span><span class="p">(</span>
+    <span class="n">option_strings</span><span class="p">,</span>
+    <span class="n">dest</span><span class="p">,</span>
+    <span class="n">nargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">const</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">choices</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">metavar</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Fixes bug http://bugs.python.org/issue16399 for 'append' action</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="n">DiscardDefaultIfSpecifiedAppendAction</span>(<span class="n">_AppendAction</span>):
+
+    <span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">    Fixes bug http://bugs.python.org/issue16399 for &#39;append&#39; action</span>
+
+<span class="s">    &quot;&quot;&quot;</span>
+
+    <span class="n">def</span> <span class="n">__call__</span>(<span class="nb">self</span>, <span class="n">parser</span>, <span class="n">namespace</span>, <span class="nb">values</span>, <span class="n">option_string</span>=<span class="n">None</span>):
+
+        <span class="k">if</span> <span class="n">getattr</span>(<span class="nb">self</span>, <span class="s">&quot;_discarded_default&quot;</span>, <span class="n">None</span>) <span class="k">is</span> <span class="n">None:</span>
+
+            <span class="n">setattr</span>(<span class="n">namespace</span>, <span class="nb">self</span>.<span class="n">dest</span>, [])
+
+            <span class="nb">self</span>.<span class="n">_discarded_default</span> = <span class="nb">True</span>  <span class="c1"># pylint: disable=attribute-defined-outside-init</span>
+
+        <span class="n">super</span>().<span class="n">__call__</span>(<span class="n">parser</span>, <span class="n">namespace</span>, <span class="nb">values</span>, <span class="n">option_string</span>=<span class="n">None</span>)
+</code></pre></div>
+
+</details>
+<hr />
+<h4 id="ancestors-in-mro">Ancestors (in MRO)</h4>
+<ul>
+<li>argparse._AppendAction</li>
+<li>argparse.Action</li>
+<li>argparse._AttributeHolder</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Index" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Index
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../vcs/" class="md-footer__link md-footer__link--next" aria-label="Next: Vcs" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Vcs
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      (c) 2022 Las Vegas Sands
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["search.suggest", "search.highlight", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+        <script src="/docs/js/termynal.js"></script>
+      
+        <script src="/docs/js/custom.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2192 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Version-bump your software with a single command!">
+      
+      
+      
+        <link rel="canonical" href="https://christokur.github.io/bump2version/reference/bumpversion/cli/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.4">
+    
+    
+      
+        <title>CLI - bump2version</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.80dcb947.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="/docs/css/termynal.css">
+    
+      <link rel="stylesheet" href="/docs/css/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="brown">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-bumpversioncli" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="bump2version" class="md-header__button md-logo" aria-label="bump2version" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            bump2version
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CLI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="brown"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="yellow"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/christokur/bump2version" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bump2version
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="bump2version" class="md-nav__button md-logo" aria-label="bump2version" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    bump2version
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/christokur/bump2version" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bump2version
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CHANGELOG/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LICENSE/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RELATED/" class="md-nav__link">
+        Related
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/TODO/" class="md-nav__link">
+        Todo
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1" type="checkbox" id="__nav_7_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_1">
+          Semantic Versioning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Semantic Versioning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Semantic Versioning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/examples/semantic-versioning/" class="md-nav__link">
+        Readme
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_1" type="checkbox" id="__nav_8_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_1">
+          Bumpversion
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bumpversion" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_1">
+          <span class="md-nav__icon md-icon"></span>
+          Bumpversion
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          CLI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        CLI
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    main
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#split_args_in_optional_and_positional" class="md-nav__link">
+    split_args_in_optional_and_positional
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        Utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vcs/" class="md-nav__link">
+        Vcs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version_part/" class="md-nav__link">
+        Version Part
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    main
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#split_args_in_optional_and_positional" class="md-nav__link">
+    split_args_in_optional_and_positional
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/christokur/bump2version/edit/master/reference/bumpversion/cli.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="module-bumpversioncli">Module bumpversion.cli</h1>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="kn">import</span> <span class="nn">glob</span>
+
+<span class="kn">import</span> <span class="nn">io</span>
+
+<span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">import</span> <span class="nn">sre_constants</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">from</span> <span class="nn">configparser</span> <span class="kn">import</span> <span class="n">ConfigParser</span><span class="p">,</span> <span class="n">NoOptionError</span><span class="p">,</span> <span class="n">RawConfigParser</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">from</span> <span class="nn">bumpversion</span> <span class="kn">import</span> <span class="n">__title__</span><span class="p">,</span> <span class="n">__version__</span>
+
+<span class="kn">from</span> <span class="nn">bumpversion.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
+
+    <span class="n">IncompleteVersionRepresentationException</span><span class="p">,</span>
+
+    <span class="n">MissingValueForSerializationException</span><span class="p">,</span>
+
+    <span class="n">WorkingDirectoryIsDirtyException</span><span class="p">,</span>
+
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">bumpversion.utils</span> <span class="kn">import</span> <span class="p">(</span>
+
+    <span class="n">ConfiguredFile</span><span class="p">,</span>
+
+    <span class="n">DiscardDefaultIfSpecifiedAppendAction</span><span class="p">,</span>
+
+    <span class="n">keyvaluestring</span><span class="p">,</span>
+
+    <span class="n">prefixed_environ</span><span class="p">,</span>
+
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">bumpversion.vcs</span> <span class="kn">import</span> <span class="n">Git</span><span class="p">,</span> <span class="n">Mercurial</span>
+
+<span class="kn">from</span> <span class="nn">bumpversion.version_part</span> <span class="kn">import</span> <span class="p">(</span>
+
+    <span class="n">ConfiguredVersionPartConfiguration</span><span class="p">,</span>
+
+    <span class="n">NumericVersionPartConfiguration</span><span class="p">,</span>
+
+    <span class="n">VersionConfig</span><span class="p">,</span>
+
+<span class="p">)</span>
+
+<span class="n">DESCRIPTION</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">: v</span><span class="si">{}</span><span class="s2"> (using Python v</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">__title__</span><span class="p">,</span> <span class="n">__version__</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">VCS</span> <span class="o">=</span> <span class="p">[</span><span class="n">Git</span><span class="p">,</span> <span class="n">Mercurial</span><span class="p">]</span>
+
+<span class="c1"># detect either</span>
+
+<span class="c1"># bumpversion:part:value</span>
+
+<span class="c1"># bumpversion:file:value</span>
+
+<span class="c1"># bumpversion:file(suffix):value</span>
+
+<span class="c1"># bumpversion:file ( suffix with spaces):value</span>
+
+<span class="n">RE_DETECT_SECTION_TYPE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+
+    <span class="sa">r</span><span class="s2">&quot;^bumpversion:&quot;</span> <span class="sa">r</span><span class="s2">&quot;((?P&lt;file&gt;file|glob)(\s*\(\s*(?P&lt;file_suffix&gt;[^\):]+)\)?)?|(?P&lt;part&gt;part)):&quot;</span> <span class="sa">r</span><span class="s2">&quot;(?P&lt;value&gt;.+)&quot;</span><span class="p">,</span>
+
+<span class="p">)</span>
+
+<span class="n">logger_list</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;bumpversion.list&quot;</span><span class="p">)</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">time_context</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;now&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;utcnow&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()}</span>
+
+<span class="n">special_char_context</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="s2">&quot;;&quot;</span><span class="p">)}</span>
+
+<span class="n">OPTIONAL_ARGUMENTS_THAT_TAKE_VALUES</span> <span class="o">=</span> <span class="p">[</span>
+
+    <span class="s2">&quot;--config-file&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;--current-version&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;--message&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;--new-version&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;--parse&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;--serialize&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;--search&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;--replace&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;--tag-name&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;--tag-message&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+
+<span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">original_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+    <span class="c1"># determine configuration based on command-line arguments</span>
+
+    <span class="c1"># and on-disk configuration files</span>
+
+    <span class="n">args</span><span class="p">,</span> <span class="n">known_args</span><span class="p">,</span> <span class="n">root_parser</span><span class="p">,</span> <span class="n">positionals</span> <span class="o">=</span> <span class="n">_parse_arguments_phase_1</span><span class="p">(</span><span class="n">original_args</span><span class="p">)</span>
+
+    <span class="n">_setup_logging</span><span class="p">(</span><span class="n">known_args</span><span class="o">.</span><span class="n">list</span><span class="p">,</span> <span class="n">known_args</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
+
+    <span class="n">vcs_info</span> <span class="o">=</span> <span class="n">_determine_vcs_usability</span><span class="p">()</span>
+
+    <span class="n">defaults</span> <span class="o">=</span> <span class="n">_determine_current_version</span><span class="p">(</span><span class="n">vcs_info</span><span class="p">)</span>
+
+    <span class="n">explicit_config</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">known_args</span><span class="p">,</span> <span class="s2">&quot;config_file&quot;</span><span class="p">):</span>
+
+        <span class="n">explicit_config</span> <span class="o">=</span> <span class="n">known_args</span><span class="o">.</span><span class="n">config_file</span>
+
+    <span class="n">config_file</span> <span class="o">=</span> <span class="n">_determine_config_file</span><span class="p">(</span><span class="n">explicit_config</span><span class="p">)</span>
+
+    <span class="n">config</span><span class="p">,</span> <span class="n">config_file_exists</span><span class="p">,</span> <span class="n">config_newlines</span><span class="p">,</span> <span class="n">part_configs</span><span class="p">,</span> <span class="n">files</span> <span class="o">=</span> <span class="n">_load_configuration</span><span class="p">(</span>
+
+        <span class="n">config_file</span><span class="p">,</span>
+
+        <span class="n">explicit_config</span><span class="p">,</span>
+
+        <span class="n">defaults</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="n">known_args</span><span class="p">,</span> <span class="n">parser2</span><span class="p">,</span> <span class="n">remaining_argv</span> <span class="o">=</span> <span class="n">_parse_arguments_phase_2</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">known_args</span><span class="p">,</span> <span class="n">defaults</span><span class="p">,</span> <span class="n">root_parser</span><span class="p">)</span>
+
+    <span class="n">version_config</span> <span class="o">=</span> <span class="n">_setup_versionconfig</span><span class="p">(</span><span class="n">known_args</span><span class="p">,</span> <span class="n">part_configs</span><span class="p">)</span>
+
+    <span class="n">current_version</span> <span class="o">=</span> <span class="n">version_config</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">known_args</span><span class="o">.</span><span class="n">current_version</span><span class="p">)</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+
+        <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span>
+
+            <span class="n">time_context</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
+
+            <span class="n">prefixed_environ</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
+
+            <span class="n">vcs_info</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
+
+            <span class="n">special_char_context</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
+
+        <span class="p">)</span>
+
+    <span class="p">)</span>
+
+    <span class="c1"># calculate the desired new version</span>
+
+    <span class="n">new_version</span> <span class="o">=</span> <span class="n">_assemble_new_version</span><span class="p">(</span>
+
+        <span class="n">context</span><span class="p">,</span> <span class="n">current_version</span><span class="p">,</span> <span class="n">defaults</span><span class="p">,</span> <span class="n">known_args</span><span class="o">.</span><span class="n">current_version</span><span class="p">,</span> <span class="n">positionals</span><span class="p">,</span> <span class="n">version_config</span>
+
+    <span class="p">)</span>
+
+    <span class="n">args</span><span class="p">,</span> <span class="n">file_names</span> <span class="o">=</span> <span class="n">_parse_arguments_phase_3</span><span class="p">(</span><span class="n">remaining_argv</span><span class="p">,</span> <span class="n">positionals</span><span class="p">,</span> <span class="n">defaults</span><span class="p">,</span> <span class="n">parser2</span><span class="p">)</span>
+
+    <span class="n">new_version</span> <span class="o">=</span> <span class="n">_parse_new_version</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">new_version</span><span class="p">,</span> <span class="n">version_config</span><span class="p">)</span>
+
+    <span class="c1"># do not use the files from the config</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">no_configured_files</span><span class="p">:</span>
+
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># replace version in target files</span>
+
+    <span class="n">vcs</span> <span class="o">=</span> <span class="n">_determine_vcs_dirty</span><span class="p">(</span><span class="n">VCS</span><span class="p">,</span> <span class="n">defaults</span><span class="p">)</span>
+
+    <span class="n">files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ConfiguredFile</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">version_config</span><span class="p">)</span> <span class="k">for</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="p">(</span><span class="n">file_names</span> <span class="ow">or</span> <span class="n">positionals</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+
+    <span class="n">_check_files_contain_version</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">current_version</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+    <span class="n">_replace_version_in_files</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">current_version</span><span class="p">,</span> <span class="n">new_version</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">dry_run</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+    <span class="n">_log_list</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">new_version</span><span class="p">)</span>
+
+    <span class="c1"># store the new version</span>
+
+    <span class="n">_update_config_file</span><span class="p">(</span>
+
+        <span class="n">config</span><span class="p">,</span>
+
+        <span class="n">config_file</span><span class="p">,</span>
+
+        <span class="n">config_newlines</span><span class="p">,</span>
+
+        <span class="n">config_file_exists</span><span class="p">,</span>
+
+        <span class="n">args</span><span class="o">.</span><span class="n">new_version</span><span class="p">,</span>
+
+        <span class="n">args</span><span class="o">.</span><span class="n">dry_run</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="c1"># commit and tag</span>
+
+    <span class="k">if</span> <span class="n">vcs</span><span class="p">:</span>
+
+        <span class="n">context</span> <span class="o">=</span> <span class="n">_commit_to_vcs</span><span class="p">(</span>
+
+            <span class="n">files</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">config_file_exists</span><span class="p">,</span> <span class="n">vcs</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">current_version</span><span class="p">,</span> <span class="n">new_version</span>
+
+        <span class="p">)</span>
+
+        <span class="n">_tag_in_vcs</span><span class="p">(</span><span class="n">vcs</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">split_args_in_optional_and_positional</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+
+    <span class="c1"># manually parsing positional arguments because stupid argparse can&#39;t mix</span>
+
+    <span class="c1"># positional and optional arguments</span>
+
+    <span class="n">positions</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">arg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">previous</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="n">previous</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">arg</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span> <span class="ow">and</span> <span class="p">(</span><span class="n">previous</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">OPTIONAL_ARGUMENTS_THAT_TAKE_VALUES</span><span class="p">):</span>
+
+            <span class="n">positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="n">positionals</span> <span class="o">=</span> <span class="p">[</span><span class="n">arg</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">arg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">]</span>
+
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">arg</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">arg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">positionals</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_parse_arguments_phase_1</span><span class="p">(</span><span class="n">original_args</span><span class="p">):</span>
+
+    <span class="n">positionals</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">split_args_in_optional_and_positional</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="n">original_args</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">original_args</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">positionals</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+
+            <span class="s2">&quot;Giving multiple files on the command line will be deprecated, &quot;</span>
+
+            <span class="s2">&quot;please use [bumpversion:file:...] in a config file.&quot;</span><span class="p">,</span>
+
+            <span class="ne">PendingDeprecationWarning</span><span class="p">,</span>
+
+        <span class="p">)</span>
+
+    <span class="n">root_parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">add_help</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">root_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--config-file&quot;</span><span class="p">,</span>
+
+        <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;FILE&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">,</span>
+
+        <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Config file to read most of the variables from (default: .bumpversion.cfg)&quot;</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="n">root_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span>
+
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Print verbose logging to stderr&quot;</span><span class="p">,</span>
+
+        <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="n">root_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--list&quot;</span><span class="p">,</span>
+
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;List machine readable information&quot;</span><span class="p">,</span>
+
+        <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="n">root_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--allow-dirty&quot;</span><span class="p">,</span>
+
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Don&#39;t abort if working directory is dirty&quot;</span><span class="p">,</span>
+
+        <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="n">known_args</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">root_parser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">args</span><span class="p">,</span> <span class="n">known_args</span><span class="p">,</span> <span class="n">root_parser</span><span class="p">,</span> <span class="n">positionals</span>
+
+<span class="k">def</span> <span class="nf">_setup_logging</span><span class="p">(</span><span class="n">show_list</span><span class="p">,</span> <span class="n">verbose</span><span class="p">):</span>
+
+    <span class="n">logformatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
+
+        <span class="n">ch1</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+
+        <span class="n">ch1</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">logformatter</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">ch1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">logger_list</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
+
+        <span class="n">ch2</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+
+        <span class="n">ch2</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">logformatter</span><span class="p">)</span>
+
+        <span class="n">logger_list</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">ch2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">show_list</span><span class="p">:</span>
+
+        <span class="n">logger_list</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+
+        <span class="n">log_level</span> <span class="o">=</span> <span class="p">[</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">][</span><span class="n">verbose</span><span class="p">]</span>
+
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+
+        <span class="n">log_level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span>
+
+    <span class="n">root_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">root_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">log_level</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Starting </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">DESCRIPTION</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_determine_vcs_usability</span><span class="p">():</span>
+
+    <span class="n">vcs_info</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">vcs</span> <span class="ow">in</span> <span class="n">VCS</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">vcs</span><span class="o">.</span><span class="n">is_usable</span><span class="p">():</span>
+
+            <span class="n">vcs_info</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">vcs</span><span class="o">.</span><span class="n">latest_tag_info</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">vcs_info</span>
+
+<span class="k">def</span> <span class="nf">_determine_current_version</span><span class="p">(</span><span class="n">vcs_info</span><span class="p">):</span>
+
+    <span class="n">defaults</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">if</span> <span class="s2">&quot;current_version&quot;</span> <span class="ow">in</span> <span class="n">vcs_info</span><span class="p">:</span>
+
+        <span class="n">defaults</span><span class="p">[</span><span class="s2">&quot;current_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vcs_info</span><span class="p">[</span><span class="s2">&quot;current_version&quot;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">defaults</span>
+
+<span class="k">def</span> <span class="nf">_determine_config_file</span><span class="p">(</span><span class="n">explicit_config</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">explicit_config</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="n">explicit_config</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;.bumpversion.cfg&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;setup.cfg&quot;</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="s2">&quot;setup.cfg&quot;</span>
+
+    <span class="k">return</span> <span class="s2">&quot;.bumpversion.cfg&quot;</span>
+
+<span class="k">def</span> <span class="nf">_load_configuration</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="n">explicit_config</span><span class="p">,</span> <span class="n">defaults</span><span class="p">):</span>
+
+    <span class="c1"># setup.cfg supports interpolation - for compatibility we must do the same.</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;setup.cfg&quot;</span><span class="p">:</span>
+
+        <span class="n">config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="n">config</span> <span class="o">=</span> <span class="n">RawConfigParser</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="c1"># don&#39;t transform keys to lowercase (which would be the default)</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">optionxform</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">option</span><span class="p">:</span> <span class="n">option</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="s2">&quot;bumpversion&quot;</span><span class="p">)</span>
+
+    <span class="n">config_file_exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">config_file_exists</span><span class="p">:</span>
+
+        <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Could not read config file at </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">explicit_config</span><span class="p">:</span>
+
+            <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">config</span><span class="p">,</span> <span class="n">config_file_exists</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">{},</span> <span class="p">[]</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Reading config file </span><span class="si">%s</span><span class="s2">:&quot;</span><span class="p">,</span> <span class="n">config_file</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">config_fp</span><span class="p">:</span>
+
+        <span class="n">config_content</span> <span class="o">=</span> <span class="n">config_fp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="n">config_newlines</span> <span class="o">=</span> <span class="n">config_fp</span><span class="o">.</span><span class="n">newlines</span>
+
+    <span class="c1"># TODO: this is a DEBUG level log</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">config_content</span><span class="p">)</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">read_string</span><span class="p">(</span><span class="n">config_content</span><span class="p">)</span>
+
+    <span class="n">log_config</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">log_config</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">has_option</span><span class="p">(</span><span class="s2">&quot;bumpversion&quot;</span><span class="p">,</span> <span class="s2">&quot;files&quot;</span><span class="p">):</span>
+
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+
+            <span class="s2">&quot;&#39;files =&#39; configuration will be deprecated, please use [bumpversion:file:...]&quot;</span><span class="p">,</span>
+
+            <span class="ne">PendingDeprecationWarning</span><span class="p">,</span>
+
+        <span class="p">)</span>
+
+    <span class="n">defaults</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="s2">&quot;bumpversion&quot;</span><span class="p">)))</span>
+
+    <span class="k">for</span> <span class="n">listvaluename</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;serialize&quot;</span><span class="p">,):</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="n">value</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;bumpversion&quot;</span><span class="p">,</span> <span class="n">listvaluename</span><span class="p">)</span>
+
+            <span class="n">defaults</span><span class="p">[</span><span class="n">listvaluename</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())))</span>
+
+        <span class="k">except</span> <span class="n">NoOptionError</span><span class="p">:</span>
+
+            <span class="k">pass</span>  <span class="c1"># no default value then ;)</span>
+
+    <span class="k">for</span> <span class="n">boolvaluename</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;commit&quot;</span><span class="p">,</span> <span class="s2">&quot;tag&quot;</span><span class="p">,</span> <span class="s2">&quot;dry_run&quot;</span><span class="p">):</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="n">defaults</span><span class="p">[</span><span class="n">boolvaluename</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s2">&quot;bumpversion&quot;</span><span class="p">,</span> <span class="n">boolvaluename</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="n">NoOptionError</span><span class="p">:</span>
+
+            <span class="k">pass</span>  <span class="c1"># no default value then ;)</span>
+
+    <span class="n">part_configs</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">section_name</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">sections</span><span class="p">():</span>
+
+        <span class="n">section_type_match</span> <span class="o">=</span> <span class="n">RE_DETECT_SECTION_TYPE</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">section_name</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">section_type_match</span><span class="p">:</span>
+
+            <span class="k">continue</span>
+
+        <span class="n">section_type</span> <span class="o">=</span> <span class="n">section_type_match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
+
+        <span class="n">section_value</span> <span class="o">=</span> <span class="n">section_type</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+
+        <span class="n">section_config</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="n">section_name</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">section_type</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;part&quot;</span><span class="p">):</span>
+
+            <span class="n">ThisVersionPartConfiguration</span> <span class="o">=</span> <span class="n">NumericVersionPartConfiguration</span>
+
+            <span class="k">if</span> <span class="s2">&quot;values&quot;</span> <span class="ow">in</span> <span class="n">section_config</span><span class="p">:</span>
+
+                <span class="n">section_config</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+
+                    <span class="nb">filter</span><span class="p">(</span>
+
+                        <span class="kc">None</span><span class="p">,</span>
+
+                        <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">section_config</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()),</span>
+
+                    <span class="p">)</span>
+
+                <span class="p">)</span>
+
+                <span class="n">ThisVersionPartConfiguration</span> <span class="o">=</span> <span class="n">ConfiguredVersionPartConfiguration</span>
+
+            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">has_option</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="s2">&quot;independent&quot;</span><span class="p">):</span>
+
+                <span class="n">section_config</span><span class="p">[</span><span class="s2">&quot;independent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="s2">&quot;independent&quot;</span><span class="p">)</span>
+
+            <span class="n">part_configs</span><span class="p">[</span><span class="n">section_value</span><span class="p">]</span> <span class="o">=</span> <span class="n">ThisVersionPartConfiguration</span><span class="p">(</span><span class="o">**</span><span class="n">section_config</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">section_type</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">):</span>
+
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">section_value</span>
+
+            <span class="k">if</span> <span class="s2">&quot;serialize&quot;</span> <span class="ow">in</span> <span class="n">section_config</span><span class="p">:</span>
+
+                <span class="n">section_config</span><span class="p">[</span><span class="s2">&quot;serialize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+
+                    <span class="nb">filter</span><span class="p">(</span>
+
+                        <span class="kc">None</span><span class="p">,</span>
+
+                        <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">n&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">section_config</span><span class="p">[</span><span class="s2">&quot;serialize&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()),</span>
+
+                    <span class="p">)</span>
+
+                <span class="p">)</span>
+
+            <span class="n">section_config</span><span class="p">[</span><span class="s2">&quot;part_configs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">part_configs</span>
+
+            <span class="k">if</span> <span class="s2">&quot;parse&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">section_config</span><span class="p">:</span>
+
+                <span class="n">section_config</span><span class="p">[</span><span class="s2">&quot;parse&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">defaults</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parse&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;(?P&lt;major&gt;\d+)\.(?P&lt;minor&gt;\d+)\.(?P&lt;patch&gt;\d+)&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="s2">&quot;serialize&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">section_config</span><span class="p">:</span>
+
+                <span class="n">section_config</span><span class="p">[</span><span class="s2">&quot;serialize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">defaults</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;serialize&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{major}</span><span class="s2">.</span><span class="si">{minor}</span><span class="s2">.</span><span class="si">{patch}</span><span class="s2">&quot;</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="s2">&quot;search&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">section_config</span><span class="p">:</span>
+
+                <span class="n">section_config</span><span class="p">[</span><span class="s2">&quot;search&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">defaults</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{current_version}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="s2">&quot;replace&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">section_config</span><span class="p">:</span>
+
+                <span class="n">section_config</span><span class="p">[</span><span class="s2">&quot;replace&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">defaults</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;replace&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{new_version}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="n">version_config</span> <span class="o">=</span> <span class="n">VersionConfig</span><span class="p">(</span><span class="o">**</span><span class="n">section_config</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">section_type</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;glob&quot;</span><span class="p">:</span>
+
+                <span class="k">for</span> <span class="n">filename_glob</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+                    <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ConfiguredFile</span><span class="p">(</span><span class="n">filename_glob</span><span class="p">,</span> <span class="n">version_config</span><span class="p">))</span>
+
+            <span class="k">else</span><span class="p">:</span>
+
+                <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ConfiguredFile</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">version_config</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">config</span><span class="p">,</span> <span class="n">config_file_exists</span><span class="p">,</span> <span class="n">config_newlines</span><span class="p">,</span> <span class="n">part_configs</span><span class="p">,</span> <span class="n">files</span>
+
+<span class="k">def</span> <span class="nf">_parse_arguments_phase_2</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">known_args</span><span class="p">,</span> <span class="n">defaults</span><span class="p">,</span> <span class="n">root_parser</span><span class="p">):</span>
+
+    <span class="n">parser2</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s2">&quot;bumpversion&quot;</span><span class="p">,</span> <span class="n">add_help</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="n">root_parser</span><span class="p">])</span>
+
+    <span class="n">parser2</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="o">**</span><span class="n">defaults</span><span class="p">)</span>
+
+    <span class="n">parser2</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--current-version&quot;</span><span class="p">,</span>
+
+        <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;VERSION&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Version that needs to be updated&quot;</span><span class="p">,</span>
+
+        <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="n">parser2</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--parse&quot;</span><span class="p">,</span>
+
+        <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;REGEX&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Regex parsing the version string&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parse&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;(?P&lt;major&gt;\d+)\.(?P&lt;minor&gt;\d+)\.(?P&lt;patch&gt;\d+)&quot;</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">parser2</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--serialize&quot;</span><span class="p">,</span>
+
+        <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;FORMAT&quot;</span><span class="p">,</span>
+
+        <span class="n">action</span><span class="o">=</span><span class="n">DiscardDefaultIfSpecifiedAppendAction</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;How to format what is parsed back to a version&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;serialize&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{major}</span><span class="s2">.</span><span class="si">{minor}</span><span class="s2">.</span><span class="si">{patch}</span><span class="s2">&quot;</span><span class="p">]),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">parser2</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--search&quot;</span><span class="p">,</span>
+
+        <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;SEARCH&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Template for complete string to search&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{current_version}</span><span class="s2">&quot;</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">parser2</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--replace&quot;</span><span class="p">,</span>
+
+        <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;REPLACE&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Template for complete string to replace&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;replace&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{new_version}</span><span class="s2">&quot;</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">known_args</span><span class="p">,</span> <span class="n">remaining_argv</span> <span class="o">=</span> <span class="n">parser2</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="n">defaults</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">vars</span><span class="p">(</span><span class="n">known_args</span><span class="p">))</span>
+
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">known_args</span><span class="o">.</span><span class="n">serialize</span><span class="p">,</span> <span class="nb">list</span><span class="p">),</span> <span class="s2">&quot;Argument `serialize` must be a list&quot;</span>
+
+    <span class="k">return</span> <span class="n">known_args</span><span class="p">,</span> <span class="n">parser2</span><span class="p">,</span> <span class="n">remaining_argv</span>
+
+<span class="k">def</span> <span class="nf">_setup_versionconfig</span><span class="p">(</span><span class="n">known_args</span><span class="p">,</span> <span class="n">part_configs</span><span class="p">):</span>
+
+    <span class="k">try</span><span class="p">:</span>
+
+        <span class="n">version_config</span> <span class="o">=</span> <span class="n">VersionConfig</span><span class="p">(</span>
+
+            <span class="n">parse</span><span class="o">=</span><span class="n">known_args</span><span class="o">.</span><span class="n">parse</span><span class="p">,</span>
+
+            <span class="n">serialize</span><span class="o">=</span><span class="n">known_args</span><span class="o">.</span><span class="n">serialize</span><span class="p">,</span>
+
+            <span class="n">search</span><span class="o">=</span><span class="n">known_args</span><span class="o">.</span><span class="n">search</span><span class="p">,</span>
+
+            <span class="n">replace</span><span class="o">=</span><span class="n">known_args</span><span class="o">.</span><span class="n">replace</span><span class="p">,</span>
+
+            <span class="n">part_configs</span><span class="o">=</span><span class="n">part_configs</span><span class="p">,</span>
+
+        <span class="p">)</span>
+
+    <span class="k">except</span> <span class="n">sre_constants</span><span class="o">.</span><span class="n">error</span><span class="p">:</span>
+
+        <span class="c1"># TODO: use re.error here mayhaps, also: should we log?</span>
+
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">version_config</span>
+
+<span class="k">def</span> <span class="nf">_assemble_new_version</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">current_version</span><span class="p">,</span> <span class="n">defaults</span><span class="p">,</span> <span class="n">arg_current_version</span><span class="p">,</span> <span class="n">positionals</span><span class="p">,</span> <span class="n">version_config</span><span class="p">):</span>
+
+    <span class="n">new_version</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="s2">&quot;new_version&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">defaults</span> <span class="ow">and</span> <span class="n">arg_current_version</span><span class="p">:</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="n">current_version</span> <span class="ow">and</span> <span class="n">positionals</span><span class="p">:</span>
+
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Attempting to increment part &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">positionals</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+                <span class="n">new_version</span> <span class="o">=</span> <span class="n">current_version</span><span class="o">.</span><span class="n">bump</span><span class="p">(</span><span class="n">positionals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">version_config</span><span class="o">.</span><span class="n">order</span><span class="p">())</span>
+
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Values are now: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">keyvaluestring</span><span class="p">(</span><span class="n">new_version</span><span class="o">.</span><span class="n">_values</span><span class="p">))</span>
+
+                <span class="n">defaults</span><span class="p">[</span><span class="s2">&quot;new_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">version_config</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="n">new_version</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="n">MissingValueForSerializationException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Opportunistic finding of new_version failed: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="n">IncompleteVersionRepresentationException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Opportunistic finding of new_version failed: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Opportunistic finding of new_version failed&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">new_version</span>
+
+<span class="k">def</span> <span class="nf">_parse_arguments_phase_3</span><span class="p">(</span><span class="n">remaining_argv</span><span class="p">,</span> <span class="n">positionals</span><span class="p">,</span> <span class="n">defaults</span><span class="p">,</span> <span class="n">parser2</span><span class="p">):</span>
+
+    <span class="n">parser3</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
+
+        <span class="n">prog</span><span class="o">=</span><span class="s2">&quot;bumpversion&quot;</span><span class="p">,</span>
+
+        <span class="n">description</span><span class="o">=</span><span class="n">DESCRIPTION</span><span class="p">,</span>
+
+        <span class="n">formatter_class</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentDefaultsHelpFormatter</span><span class="p">,</span>
+
+        <span class="n">conflict_handler</span><span class="o">=</span><span class="s2">&quot;resolve&quot;</span><span class="p">,</span>
+
+        <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="n">parser2</span><span class="p">],</span>
+
+    <span class="p">)</span>
+
+    <span class="n">parser3</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="o">**</span><span class="n">defaults</span><span class="p">)</span>
+
+    <span class="n">parser3</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--current-version&quot;</span><span class="p">,</span>
+
+        <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;VERSION&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Version that needs to be updated&quot;</span><span class="p">,</span>
+
+        <span class="n">required</span><span class="o">=</span><span class="s2">&quot;current_version&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">defaults</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="n">parser3</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--no-configured-files&quot;</span><span class="p">,</span>
+
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+        <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;no_configured_files&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Only replace the version in files specified on the command line, ignoring the files from the configuration file.&quot;</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="n">parser3</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--dry-run&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;-n&quot;</span><span class="p">,</span>
+
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Don&#39;t write any files, just pretend.&quot;</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="n">parser3</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--new-version&quot;</span><span class="p">,</span>
+
+        <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;VERSION&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;New version that should be in the files&quot;</span><span class="p">,</span>
+
+        <span class="n">required</span><span class="o">=</span><span class="s2">&quot;new_version&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">defaults</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="n">commitgroup</span> <span class="o">=</span> <span class="n">parser3</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">()</span>
+
+    <span class="n">commitgroup</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--commit&quot;</span><span class="p">,</span>
+
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+
+        <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;commit&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Commit to version control&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;commit&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">commitgroup</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--no-commit&quot;</span><span class="p">,</span>
+
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_false&quot;</span><span class="p">,</span>
+
+        <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;commit&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Do not commit to version control&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="n">taggroup</span> <span class="o">=</span> <span class="n">parser3</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">()</span>
+
+    <span class="n">taggroup</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--tag&quot;</span><span class="p">,</span>
+
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+
+        <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;tag&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tag&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Create a tag in version control&quot;</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="n">taggroup</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--no-tag&quot;</span><span class="p">,</span>
+
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_false&quot;</span><span class="p">,</span>
+
+        <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;tag&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Do not create a tag in version control&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="n">signtagsgroup</span> <span class="o">=</span> <span class="n">parser3</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">()</span>
+
+    <span class="n">signtagsgroup</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--sign-tags&quot;</span><span class="p">,</span>
+
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+
+        <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;sign_tags&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Sign tags if created&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sign_tags&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">signtagsgroup</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--no-sign-tags&quot;</span><span class="p">,</span>
+
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_false&quot;</span><span class="p">,</span>
+
+        <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;sign_tags&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Do not sign tags if created&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="n">parser3</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--tag-name&quot;</span><span class="p">,</span>
+
+        <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;TAG_NAME&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Tag name (only works with --tag)&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tag_name&quot;</span><span class="p">,</span> <span class="s2">&quot;v</span><span class="si">{new_version}</span><span class="s2">&quot;</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">parser3</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--tag-message&quot;</span><span class="p">,</span>
+
+        <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;TAG_MESSAGE&quot;</span><span class="p">,</span>
+
+        <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;tag_message&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Tag message&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tag_message&quot;</span><span class="p">,</span> <span class="s2">&quot;Bump version: </span><span class="si">{current_version}</span><span class="s2"> → </span><span class="si">{new_version}</span><span class="s2">&quot;</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">parser3</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--message&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+
+        <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;COMMIT_MSG&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Commit message&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span> <span class="s2">&quot;Bump version: </span><span class="si">{current_version}</span><span class="s2"> → </span><span class="si">{new_version}</span><span class="s2">&quot;</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">parser3</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+
+        <span class="s2">&quot;--commit-args&quot;</span><span class="p">,</span>
+
+        <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;COMMIT_ARGS&quot;</span><span class="p">,</span>
+
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Extra arguments to commit command&quot;</span><span class="p">,</span>
+
+        <span class="n">default</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;commit_args&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">file_names</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">if</span> <span class="s2">&quot;files&quot;</span> <span class="ow">in</span> <span class="n">defaults</span><span class="p">:</span>
+
+        <span class="k">assert</span> <span class="n">defaults</span><span class="p">[</span><span class="s2">&quot;files&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+        <span class="n">file_names</span> <span class="o">=</span> <span class="n">defaults</span><span class="p">[</span><span class="s2">&quot;files&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+    <span class="n">parser3</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;part&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Part of the version to be bumped.&quot;</span><span class="p">)</span>
+
+    <span class="n">parser3</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;files&quot;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Files to change&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">file_names</span><span class="p">)</span>
+
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser3</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">remaining_argv</span> <span class="o">+</span> <span class="n">positionals</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">dry_run</span><span class="p">:</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Dry run active, won&#39;t touch any files.&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">args</span><span class="p">,</span> <span class="n">file_names</span>
+
+<span class="k">def</span> <span class="nf">_parse_new_version</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">new_version</span><span class="p">,</span> <span class="n">vc</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">new_version</span><span class="p">:</span>
+
+        <span class="n">new_version</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">new_version</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;New version will be &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">new_version</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">new_version</span>
+
+<span class="k">def</span> <span class="nf">_determine_vcs_dirty</span><span class="p">(</span><span class="n">possible_vcses</span><span class="p">,</span> <span class="n">defaults</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">vcs</span> <span class="ow">in</span> <span class="n">possible_vcses</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">vcs</span><span class="o">.</span><span class="n">is_usable</span><span class="p">():</span>
+
+            <span class="k">continue</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="n">vcs</span><span class="o">.</span><span class="n">assert_nondirty</span><span class="p">()</span>
+
+        <span class="k">except</span> <span class="n">WorkingDirectoryIsDirtyException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">defaults</span><span class="p">[</span><span class="s2">&quot;allow_dirty&quot;</span><span class="p">]:</span>
+
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+
+                    <span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n\n</span><span class="s2">Use --allow-dirty to override this if you know what you&#39;re doing.&quot;</span><span class="p">,</span>
+
+                    <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">,</span>
+
+                <span class="p">)</span>
+
+                <span class="k">raise</span>
+
+        <span class="k">return</span> <span class="n">vcs</span>
+
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">_check_files_contain_version</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">current_version</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+
+    <span class="c1"># make sure files exist and contain version string</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+
+        <span class="s2">&quot;Asserting files </span><span class="si">%s</span><span class="s2"> contain the version string...&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]),</span>
+
+    <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+
+        <span class="n">f</span><span class="o">.</span><span class="n">should_contain_version</span><span class="p">(</span><span class="n">current_version</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_replace_version_in_files</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">current_version</span><span class="p">,</span> <span class="n">new_version</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+
+    <span class="c1"># change version string in files</span>
+
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+
+        <span class="n">f</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">current_version</span><span class="p">,</span> <span class="n">new_version</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_log_list</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">new_version</span><span class="p">):</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;bumpversion&quot;</span><span class="p">,</span> <span class="s2">&quot;new_version&quot;</span><span class="p">,</span> <span class="n">new_version</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="s2">&quot;bumpversion&quot;</span><span class="p">):</span>
+
+        <span class="n">logger_list</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">=</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">remove_option</span><span class="p">(</span><span class="s2">&quot;bumpversion&quot;</span><span class="p">,</span> <span class="s2">&quot;new_version&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_update_config_file</span><span class="p">(</span>
+
+    <span class="n">config</span><span class="p">,</span>
+
+    <span class="n">config_file</span><span class="p">,</span>
+
+    <span class="n">config_newlines</span><span class="p">,</span>
+
+    <span class="n">config_file_exists</span><span class="p">,</span>
+
+    <span class="n">new_version</span><span class="p">,</span>
+
+    <span class="n">dry_run</span><span class="p">,</span>
+
+<span class="p">):</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;bumpversion&quot;</span><span class="p">,</span> <span class="s2">&quot;current_version&quot;</span><span class="p">,</span> <span class="n">new_version</span><span class="p">)</span>
+
+    <span class="n">new_config</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+
+        <span class="n">write_to_config_file</span> <span class="o">=</span> <span class="p">(</span><span class="ow">not</span> <span class="n">dry_run</span><span class="p">)</span> <span class="ow">and</span> <span class="n">config_file_exists</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+
+            <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> to config file </span><span class="si">%s</span><span class="s2">:&quot;</span><span class="p">,</span>
+
+            <span class="s2">&quot;Would write&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">write_to_config_file</span> <span class="k">else</span> <span class="s2">&quot;Writing&quot;</span><span class="p">,</span>
+
+            <span class="n">config_file</span><span class="p">,</span>
+
+        <span class="p">)</span>
+
+        <span class="n">config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">new_config</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">new_config</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="n">write_to_config_file</span><span class="p">:</span>
+
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="n">config_newlines</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">new_config</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">UnicodeEncodeError</span><span class="p">:</span>
+
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+
+            <span class="s2">&quot;Unable to write UTF-8 to config file, because of an old configparser version. &quot;</span>
+
+            <span class="s2">&quot;Update with `pip install --upgrade configparser`.&quot;</span>
+
+        <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_commit_to_vcs</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">config_file_exists</span><span class="p">,</span> <span class="n">vcs</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">current_version</span><span class="p">,</span> <span class="n">new_version</span><span class="p">):</span>
+
+    <span class="n">commit_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">path</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">config_file_exists</span><span class="p">:</span>
+
+        <span class="n">commit_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">vcs</span><span class="o">.</span><span class="n">is_usable</span><span class="p">(),</span> <span class="s2">&quot;Did find &#39;</span><span class="si">{}</span><span class="s2">&#39; unusable, unable to commit.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">vcs</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+    <span class="n">do_commit</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">commit</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">dry_run</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+
+        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> commit&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Would prepare&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">do_commit</span> <span class="k">else</span> <span class="s2">&quot;Preparing&quot;</span><span class="p">,</span>
+
+        <span class="n">vcs</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">commit_files</span><span class="p">:</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+
+            <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> changes in file &#39;</span><span class="si">%s</span><span class="s2">&#39; to </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+
+            <span class="s2">&quot;Would add&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">do_commit</span> <span class="k">else</span> <span class="s2">&quot;Adding&quot;</span><span class="p">,</span>
+
+            <span class="n">path</span><span class="p">,</span>
+
+            <span class="n">vcs</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">do_commit</span><span class="p">:</span>
+
+            <span class="n">vcs</span><span class="o">.</span><span class="n">add_path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+
+        <span class="s2">&quot;current_version&quot;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">current_version</span><span class="p">,</span>
+
+        <span class="s2">&quot;new_version&quot;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">new_version</span><span class="p">,</span>
+
+    <span class="p">}</span>
+
+    <span class="n">context</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">time_context</span><span class="p">)</span>
+
+    <span class="n">context</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">prefixed_environ</span><span class="p">())</span>
+
+    <span class="n">context</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;current_&quot;</span> <span class="o">+</span> <span class="n">part</span><span class="p">:</span> <span class="n">current_version</span><span class="p">[</span><span class="n">part</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">current_version</span><span class="p">})</span>
+
+    <span class="n">context</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;new_&quot;</span> <span class="o">+</span> <span class="n">part</span><span class="p">:</span> <span class="n">new_version</span><span class="p">[</span><span class="n">part</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">new_version</span><span class="p">})</span>
+
+    <span class="n">context</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">special_char_context</span><span class="p">)</span>
+
+    <span class="n">commit_message</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+
+        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> to </span><span class="si">%s</span><span class="s2"> with message &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Would commit&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">do_commit</span> <span class="k">else</span> <span class="s2">&quot;Committing&quot;</span><span class="p">,</span>
+
+        <span class="n">vcs</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+
+        <span class="n">commit_message</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">do_commit</span><span class="p">:</span>
+
+        <span class="n">vcs</span><span class="o">.</span><span class="n">commit</span><span class="p">(</span>
+
+            <span class="n">message</span><span class="o">=</span><span class="n">commit_message</span><span class="p">,</span>
+
+            <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
+
+            <span class="n">extra_args</span><span class="o">=</span><span class="p">[</span><span class="n">arg</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">commit_args</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()],</span>
+
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">context</span>
+
+<span class="k">def</span> <span class="nf">_tag_in_vcs</span><span class="p">(</span><span class="n">vcs</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+
+    <span class="n">sign_tags</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">sign_tags</span>
+
+    <span class="n">tag_name</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">tag_name</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">)</span>
+
+    <span class="n">tag_message</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">tag_message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">)</span>
+
+    <span class="n">do_tag</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">tag</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">dry_run</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+
+        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> &#39;</span><span class="si">%s</span><span class="s2">&#39; </span><span class="si">%s</span><span class="s2"> in </span><span class="si">%s</span><span class="s2"> and </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+
+        <span class="s2">&quot;Would tag&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">do_tag</span> <span class="k">else</span> <span class="s2">&quot;Tagging&quot;</span><span class="p">,</span>
+
+        <span class="n">tag_name</span><span class="p">,</span>
+
+        <span class="s2">&quot;with message &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tag_message</span><span class="p">)</span> <span class="k">if</span> <span class="n">tag_message</span> <span class="k">else</span> <span class="s2">&quot;without message&quot;</span><span class="p">,</span>
+
+        <span class="n">vcs</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+
+        <span class="s2">&quot;signing&quot;</span> <span class="k">if</span> <span class="n">sign_tags</span> <span class="k">else</span> <span class="s2">&quot;not signing&quot;</span><span class="p">,</span>
+
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">do_tag</span><span class="p">:</span>
+
+        <span class="n">vcs</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sign_tags</span><span class="p">,</span> <span class="n">tag_name</span><span class="p">,</span> <span class="n">tag_message</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h2 id="variables">Variables</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">DESCRIPTION</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">OPTIONAL_ARGUMENTS_THAT_TAKE_VALUES</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">RE_DETECT_SECTION_TYPE</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">VCS</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">logger</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">logger_list</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">special_char_context</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">time_context</span>
+</code></pre></div>
+
+<h2 id="functions">Functions</h2>
+<h3 id="main">main</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span>
+    <span class="n">original_args</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="n">original_args</span><span class="o">=</span><span class="n">None</span><span class="p">):</span>
+
+<span class="w">    </span><span class="c1"># determine configuration based on command-line arguments</span>
+
+<span class="w">    </span><span class="c1"># and on-disk configuration files</span>
+
+<span class="w">    </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">known_args</span><span class="p">,</span><span class="w"> </span><span class="n">root_parser</span><span class="p">,</span><span class="w"> </span><span class="n">positionals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_parse_arguments_phase_1</span><span class="p">(</span><span class="n">original_args</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">_setup_logging</span><span class="p">(</span><span class="n">known_args</span><span class="o">.</span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">known_args</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">vcs_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_determine_vcs_usability</span><span class="p">()</span>
+
+<span class="w">    </span><span class="n">defaults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_determine_current_version</span><span class="p">(</span><span class="n">vcs_info</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">explicit_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">hasattr</span><span class="p">(</span><span class="n">known_args</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;config_file&quot;</span><span class="p">):</span>
+
+<span class="w">        </span><span class="n">explicit_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">known_args</span><span class="o">.</span><span class="n">config_file</span>
+
+<span class="w">    </span><span class="n">config_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_determine_config_file</span><span class="p">(</span><span class="n">explicit_config</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">config_file_exists</span><span class="p">,</span><span class="w"> </span><span class="n">config_newlines</span><span class="p">,</span><span class="w"> </span><span class="n">part_configs</span><span class="p">,</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_load_configuration</span><span class="p">(</span>
+
+<span class="w">        </span><span class="n">config_file</span><span class="p">,</span>
+
+<span class="w">        </span><span class="n">explicit_config</span><span class="p">,</span>
+
+<span class="w">        </span><span class="n">defaults</span><span class="p">,</span>
+
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">known_args</span><span class="p">,</span><span class="w"> </span><span class="n">parser2</span><span class="p">,</span><span class="w"> </span><span class="n">remaining_argv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_parse_arguments_phase_2</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">known_args</span><span class="p">,</span><span class="w"> </span><span class="n">defaults</span><span class="p">,</span><span class="w"> </span><span class="n">root_parser</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">version_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_setup_versionconfig</span><span class="p">(</span><span class="n">known_args</span><span class="p">,</span><span class="w"> </span><span class="n">part_configs</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">current_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version_config</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">known_args</span><span class="o">.</span><span class="n">current_version</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dict</span><span class="p">(</span>
+
+<span class="w">        </span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span>
+
+<span class="w">            </span><span class="n">time_context</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
+
+<span class="w">            </span><span class="n">prefixed_environ</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
+
+<span class="w">            </span><span class="n">vcs_info</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
+
+<span class="w">            </span><span class="n">special_char_context</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
+
+<span class="w">        </span><span class="p">)</span>
+
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1"># calculate the desired new version</span>
+
+<span class="w">    </span><span class="n">new_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_assemble_new_version</span><span class="p">(</span>
+
+<span class="w">        </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">current_version</span><span class="p">,</span><span class="w"> </span><span class="n">defaults</span><span class="p">,</span><span class="w"> </span><span class="n">known_args</span><span class="o">.</span><span class="n">current_version</span><span class="p">,</span><span class="w"> </span><span class="n">positionals</span><span class="p">,</span><span class="w"> </span><span class="n">version_config</span>
+
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">file_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_parse_arguments_phase_3</span><span class="p">(</span><span class="n">remaining_argv</span><span class="p">,</span><span class="w"> </span><span class="n">positionals</span><span class="p">,</span><span class="w"> </span><span class="n">defaults</span><span class="p">,</span><span class="w"> </span><span class="n">parser2</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">new_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_parse_new_version</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">new_version</span><span class="p">,</span><span class="w"> </span><span class="n">version_config</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1"># do not use the files from the config</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">args</span><span class="o">.</span><span class="n">no_configured_files</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="w">    </span><span class="c1"># replace version in target files</span>
+
+<span class="w">    </span><span class="n">vcs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_determine_vcs_dirty</span><span class="p">(</span><span class="n">VCS</span><span class="p">,</span><span class="w"> </span><span class="n">defaults</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ConfiguredFile</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="w"> </span><span class="n">version_config</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">file_name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="n">file_names</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">positionals</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+
+<span class="w">    </span><span class="n">_check_files_contain_version</span><span class="p">(</span><span class="n">files</span><span class="p">,</span><span class="w"> </span><span class="n">current_version</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">_replace_version_in_files</span><span class="p">(</span><span class="n">files</span><span class="p">,</span><span class="w"> </span><span class="n">current_version</span><span class="p">,</span><span class="w"> </span><span class="n">new_version</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">.</span><span class="n">dry_run</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">_log_list</span><span class="p">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">.</span><span class="n">new_version</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1"># store the new version</span>
+
+<span class="w">    </span><span class="n">_update_config_file</span><span class="p">(</span>
+
+<span class="w">        </span><span class="n">config</span><span class="p">,</span>
+
+<span class="w">        </span><span class="n">config_file</span><span class="p">,</span>
+
+<span class="w">        </span><span class="n">config_newlines</span><span class="p">,</span>
+
+<span class="w">        </span><span class="n">config_file_exists</span><span class="p">,</span>
+
+<span class="w">        </span><span class="n">args</span><span class="o">.</span><span class="n">new_version</span><span class="p">,</span>
+
+<span class="w">        </span><span class="n">args</span><span class="o">.</span><span class="n">dry_run</span><span class="p">,</span>
+
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1"># commit and tag</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">vcs</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_commit_to_vcs</span><span class="p">(</span>
+
+<span class="w">            </span><span class="n">files</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">config_file</span><span class="p">,</span><span class="w"> </span><span class="n">config_file_exists</span><span class="p">,</span><span class="w"> </span><span class="n">vcs</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">current_version</span><span class="p">,</span><span class="w"> </span><span class="n">new_version</span>
+
+<span class="w">        </span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">_tag_in_vcs</span><span class="p">(</span><span class="n">vcs</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h3 id="split_args_in_optional_and_positional">split_args_in_optional_and_positional</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">split_args_in_optional_and_positional</span><span class="p">(</span>
+    <span class="n">args</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">split_args_in_optional_and_positional</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+
+<span class="w">    </span><span class="c1"># manually parsing positional arguments because stupid argparse can&#39;t mix</span>
+
+<span class="w">    </span><span class="c1"># positional and optional arguments</span>
+
+<span class="w">    </span><span class="n">positions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">enumerate</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+
+<span class="w">        </span><span class="n">previous</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">previous</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">not</span><span class="w"> </span><span class="n">arg</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p">(</span><span class="n">previous</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">OPTIONAL_ARGUMENTS_THAT_TAKE_VALUES</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">positionals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">arg</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">enumerate</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">positions</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">arg</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">enumerate</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">positions</span><span class="p">]</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">positionals</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../../../docs/examples/semantic-versioning/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Readme" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Readme
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../exceptions/" class="md-footer__link md-footer__link--next" aria-label="Next: Exceptions" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Exceptions
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      (c) 2022 Las Vegas Sands
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["search.suggest", "search.highlight", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+        <script src="/docs/js/termynal.js"></script>
+      
+        <script src="/docs/js/custom.js"></script>
+      
+    
+  </body>
+</html>

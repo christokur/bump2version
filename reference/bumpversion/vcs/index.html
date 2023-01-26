@@ -1,0 +1,2243 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Version-bump your software with a single command!">
+      
+      
+      
+        <link rel="canonical" href="https://christokur.github.io/bump2version/reference/bumpversion/vcs/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.4">
+    
+    
+      
+        <title>Vcs - bump2version</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.80dcb947.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="/docs/css/termynal.css">
+    
+      <link rel="stylesheet" href="/docs/css/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="brown">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-bumpversionvcs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="bump2version" class="md-header__button md-logo" aria-label="bump2version" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            bump2version
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Vcs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="brown"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="yellow"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/christokur/bump2version" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bump2version
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="bump2version" class="md-nav__button md-logo" aria-label="bump2version" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    bump2version
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/christokur/bump2version" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bump2version
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CHANGELOG/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LICENSE/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RELATED/" class="md-nav__link">
+        Related
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/TODO/" class="md-nav__link">
+        Todo
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1" type="checkbox" id="__nav_7_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_1">
+          Semantic Versioning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Semantic Versioning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Semantic Versioning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/examples/semantic-versioning/" class="md-nav__link">
+        Readme
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_1" type="checkbox" id="__nav_8_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_1">
+          Bumpversion
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bumpversion" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_1">
+          <span class="md-nav__icon md-icon"></span>
+          Bumpversion
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        Utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Vcs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Vcs
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basevcs" class="md-nav__link">
+    BaseVCS
+  </a>
+  
+    <nav class="md-nav" aria-label="BaseVCS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descendants" class="md-nav__link">
+    Descendants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-methods" class="md-nav__link">
+    Static methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit" class="md-nav__link">
+    commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_usable" class="md-nav__link">
+    is_usable
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    Git
+  </a>
+  
+    <nav class="md-nav" aria-label="Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ancestors-in-mro" class="md-nav__link">
+    Ancestors (in MRO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-methods_1" class="md-nav__link">
+    Static methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_path" class="md-nav__link">
+    add_path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assert_nondirty" class="md-nav__link">
+    assert_nondirty
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit_1" class="md-nav__link">
+    commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_usable_1" class="md-nav__link">
+    is_usable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latest_tag_info" class="md-nav__link">
+    latest_tag_info
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tag" class="md-nav__link">
+    tag
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mercurial" class="md-nav__link">
+    Mercurial
+  </a>
+  
+    <nav class="md-nav" aria-label="Mercurial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ancestors-in-mro_1" class="md-nav__link">
+    Ancestors (in MRO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-methods_2" class="md-nav__link">
+    Static methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_path_1" class="md-nav__link">
+    add_path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assert_nondirty_1" class="md-nav__link">
+    assert_nondirty
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit_2" class="md-nav__link">
+    commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_usable_2" class="md-nav__link">
+    is_usable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latest_tag_info_1" class="md-nav__link">
+    latest_tag_info
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tag_1" class="md-nav__link">
+    tag
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version_part/" class="md-nav__link">
+        Version Part
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basevcs" class="md-nav__link">
+    BaseVCS
+  </a>
+  
+    <nav class="md-nav" aria-label="BaseVCS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descendants" class="md-nav__link">
+    Descendants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-methods" class="md-nav__link">
+    Static methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit" class="md-nav__link">
+    commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_usable" class="md-nav__link">
+    is_usable
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    Git
+  </a>
+  
+    <nav class="md-nav" aria-label="Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ancestors-in-mro" class="md-nav__link">
+    Ancestors (in MRO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-methods_1" class="md-nav__link">
+    Static methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_path" class="md-nav__link">
+    add_path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assert_nondirty" class="md-nav__link">
+    assert_nondirty
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit_1" class="md-nav__link">
+    commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_usable_1" class="md-nav__link">
+    is_usable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latest_tag_info" class="md-nav__link">
+    latest_tag_info
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tag" class="md-nav__link">
+    tag
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mercurial" class="md-nav__link">
+    Mercurial
+  </a>
+  
+    <nav class="md-nav" aria-label="Mercurial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ancestors-in-mro_1" class="md-nav__link">
+    Ancestors (in MRO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-methods_2" class="md-nav__link">
+    Static methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_path_1" class="md-nav__link">
+    add_path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assert_nondirty_1" class="md-nav__link">
+    assert_nondirty
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit_2" class="md-nav__link">
+    commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_usable_2" class="md-nav__link">
+    is_usable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latest_tag_info_1" class="md-nav__link">
+    latest_tag_info
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tag_1" class="md-nav__link">
+    tag
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/christokur/bump2version/edit/master/reference/bumpversion/vcs.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="module-bumpversionvcs">Module bumpversion.vcs</h1>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">errno</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">NamedTemporaryFile</span>
+
+<span class="kn">from</span> <span class="nn">bumpversion.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
+
+    <span class="n">MercurialDoesNotSupportSignedTagsException</span><span class="p">,</span>
+
+    <span class="n">WorkingDirectoryIsDirtyException</span><span class="p">,</span>
+
+<span class="p">)</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">BaseVCS</span><span class="p">:</span>
+
+    <span class="n">_TEST_USABLE_COMMAND</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">_COMMIT_COMMAND</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@classmethod</span>
+
+    <span class="k">def</span> <span class="nf">commit</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="n">extra_args</span> <span class="o">=</span> <span class="n">extra_args</span> <span class="ow">or</span> <span class="p">[]</span>
+
+        <span class="k">with</span> <span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="s2">&quot;wb&quot;</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+
+        <span class="n">env</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="n">env</span><span class="p">[</span><span class="s2">&quot;HGENCODING&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;utf-8&quot;</span>
+
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;current_version&quot;</span><span class="p">,</span> <span class="s2">&quot;new_version&quot;</span><span class="p">):</span>
+
+            <span class="n">env</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;BUMPVERSION_&quot;</span> <span class="o">+</span> <span class="n">key</span><span class="o">.</span><span class="n">upper</span><span class="p">())]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">context</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_COMMIT_COMMAND</span> <span class="o">+</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="n">extra_args</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+
+            <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;Failed to run </span><span class="si">{}</span><span class="s2">: return code </span><span class="si">{}</span><span class="s2">, output: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">cmd</span><span class="p">,</span> <span class="n">exc</span><span class="o">.</span><span class="n">returncode</span><span class="p">,</span> <span class="n">exc</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
+
+            <span class="k">raise</span> <span class="n">exc</span>
+
+        <span class="k">finally</span><span class="p">:</span>
+
+            <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+
+    <span class="k">def</span> <span class="nf">is_usable</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="k">return</span> <span class="p">(</span>
+
+                <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+
+                    <span class="bp">cls</span><span class="o">.</span><span class="n">_TEST_USABLE_COMMAND</span><span class="p">,</span>
+
+                    <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+
+                    <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+
+                <span class="p">)</span>
+
+                <span class="o">==</span> <span class="mi">0</span>
+
+            <span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">errno</span> <span class="ow">in</span> <span class="p">(</span><span class="n">errno</span><span class="o">.</span><span class="n">ENOENT</span><span class="p">,</span> <span class="n">errno</span><span class="o">.</span><span class="n">EACCES</span><span class="p">,</span> <span class="n">errno</span><span class="o">.</span><span class="n">ENOTDIR</span><span class="p">):</span>
+
+                <span class="k">return</span> <span class="kc">False</span>
+
+            <span class="k">raise</span>
+
+<span class="k">class</span> <span class="nc">Git</span><span class="p">(</span><span class="n">BaseVCS</span><span class="p">):</span>
+
+    <span class="n">_TEST_USABLE_COMMAND</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;rev-parse&quot;</span><span class="p">,</span> <span class="s2">&quot;--git-dir&quot;</span><span class="p">]</span>
+
+    <span class="n">_COMMIT_COMMAND</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;commit&quot;</span><span class="p">,</span> <span class="s2">&quot;-F&quot;</span><span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+
+    <span class="k">def</span> <span class="nf">assert_nondirty</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span>
+
+            <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">,</span> <span class="s2">&quot;--porcelain&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;??&quot;</span><span class="p">)</span>
+
+        <span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">lines</span><span class="p">:</span>
+
+            <span class="k">raise</span> <span class="n">WorkingDirectoryIsDirtyException</span><span class="p">(</span>
+
+                <span class="s2">&quot;Git working directory is not clean:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+            <span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+
+    <span class="k">def</span> <span class="nf">latest_tag_info</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="c1"># git-describe doesn&#39;t update the git-index, so we do that</span>
+
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;update-index&quot;</span><span class="p">,</span> <span class="s2">&quot;--refresh&quot;</span><span class="p">])</span>
+
+            <span class="c1"># get info about the latest tag in git</span>
+
+            <span class="n">describe_out</span> <span class="o">=</span> <span class="p">(</span>
+
+                <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span>
+
+                    <span class="p">[</span>
+
+                        <span class="s2">&quot;git&quot;</span><span class="p">,</span>
+
+                        <span class="s2">&quot;describe&quot;</span><span class="p">,</span>
+
+                        <span class="s2">&quot;--dirty&quot;</span><span class="p">,</span>
+
+                        <span class="s2">&quot;--tags&quot;</span><span class="p">,</span>
+
+                        <span class="s2">&quot;--long&quot;</span><span class="p">,</span>
+
+                        <span class="s2">&quot;--abbrev=40&quot;</span><span class="p">,</span>
+
+                        <span class="s2">&quot;--match=v*&quot;</span><span class="p">,</span>
+
+                    <span class="p">],</span>
+
+                    <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span>
+
+                <span class="p">)</span>
+
+                <span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+
+                <span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+
+            <span class="p">)</span>
+
+        <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span><span class="p">:</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Error when running git describe&quot;</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="p">{}</span>
+
+        <span class="n">info</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">describe_out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;dirty&quot;</span><span class="p">:</span>
+
+            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;dirty&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="n">describe_out</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+        <span class="n">info</span><span class="p">[</span><span class="s2">&quot;commit_sha&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">describe_out</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&quot;g&quot;</span><span class="p">)</span>
+
+        <span class="n">info</span><span class="p">[</span><span class="s2">&quot;distance_to_latest_tag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">describe_out</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+
+        <span class="n">info</span><span class="p">[</span><span class="s2">&quot;current_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">describe_out</span><span class="p">)</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&quot;v&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">info</span>
+
+    <span class="nd">@classmethod</span>
+
+    <span class="k">def</span> <span class="nf">add_path</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;--update&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">])</span>
+
+    <span class="nd">@classmethod</span>
+
+    <span class="k">def</span> <span class="nf">tag</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sign</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Create a tag of the new_version in VCS.</span>
+
+<span class="sd">        If only name is given, bumpversion uses a lightweight tag.</span>
+
+<span class="sd">        Otherwise, it utilizes an annotated tag.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;tag&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">sign</span><span class="p">:</span>
+
+            <span class="n">command</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;--sign&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">message</span><span class="p">:</span>
+
+            <span class="n">command</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;--message&quot;</span><span class="p">,</span> <span class="n">message</span><span class="p">]</span>
+
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Mercurial</span><span class="p">(</span><span class="n">BaseVCS</span><span class="p">):</span>
+
+    <span class="n">_TEST_USABLE_COMMAND</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;hg&quot;</span><span class="p">,</span> <span class="s2">&quot;root&quot;</span><span class="p">]</span>
+
+    <span class="n">_COMMIT_COMMAND</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;hg&quot;</span><span class="p">,</span> <span class="s2">&quot;commit&quot;</span><span class="p">,</span> <span class="s2">&quot;--logfile&quot;</span><span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+
+    <span class="k">def</span> <span class="nf">latest_tag_info</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="p">{}</span>
+
+    <span class="nd">@classmethod</span>
+
+    <span class="k">def</span> <span class="nf">assert_nondirty</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span>
+
+            <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s2">&quot;hg&quot;</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">,</span> <span class="s2">&quot;-mard&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;??&quot;</span><span class="p">)</span>
+
+        <span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">lines</span><span class="p">:</span>
+
+            <span class="k">raise</span> <span class="n">WorkingDirectoryIsDirtyException</span><span class="p">(</span>
+
+                <span class="s2">&quot;Mercurial working directory is not clean:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+            <span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+
+    <span class="k">def</span> <span class="nf">add_path</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+
+        <span class="k">pass</span>
+
+    <span class="nd">@classmethod</span>
+
+    <span class="k">def</span> <span class="nf">tag</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sign</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+
+        <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;hg&quot;</span><span class="p">,</span> <span class="s2">&quot;tag&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">sign</span><span class="p">:</span>
+
+            <span class="k">raise</span> <span class="n">MercurialDoesNotSupportSignedTagsException</span><span class="p">(</span><span class="s2">&quot;Mercurial does not support signed tags.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">message</span><span class="p">:</span>
+
+            <span class="n">command</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;--message&quot;</span><span class="p">,</span> <span class="n">message</span><span class="p">]</span>
+
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h2 id="variables">Variables</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">logger</span>
+</code></pre></div>
+
+<h2 id="classes">Classes</h2>
+<h3 id="basevcs">BaseVCS</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">BaseVCS</span><span class="p">(</span>
+    <span class="o">/</span><span class="p">,</span>
+    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nl">BaseVCS</span><span class="p">:</span>
+
+<span class="w">    </span><span class="n">_TEST_USABLE_COMMAND</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span>
+
+<span class="w">    </span><span class="n">_COMMIT_COMMAND</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span>
+
+<span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="k">commit</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">extra_args</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">extra_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extra_args</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">[]</span>
+
+<span class="w">        </span><span class="k">with</span><span class="w"> </span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="ss">&quot;wb&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">delete</span><span class="o">=</span><span class="k">False</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">f</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">f</span><span class="p">.</span><span class="k">write</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="ss">&quot;utf-8&quot;</span><span class="p">))</span>
+
+<span class="w">        </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">env</span><span class="o">[</span><span class="n">&quot;HGENCODING&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;utf-8&quot;</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;current_version&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;new_version&quot;</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">env</span><span class="o">[</span><span class="n">str(&quot;BUMPVERSION_&quot; + key.upper())</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">str</span><span class="p">(</span><span class="n">context</span><span class="o">[</span><span class="n">key</span><span class="o">]</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">try</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">cls</span><span class="p">.</span><span class="n">_COMMIT_COMMAND</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">[</span><span class="n">f.name</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">extra_args</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">)</span>
+
+<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">subprocess</span><span class="p">.</span><span class="n">CalledProcessError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">exc</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">err_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Failed to run {}: return code {}, output: {}&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">exc</span><span class="p">.</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">exc</span><span class="p">.</span><span class="n">returncode</span><span class="p">,</span><span class="w"> </span><span class="n">exc</span><span class="p">.</span><span class="k">output</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="k">exception</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">exc</span>
+
+<span class="w">        </span><span class="nl">finally</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">os</span><span class="p">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">is_usable</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">try</span><span class="err">:</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+
+<span class="w">                </span><span class="n">subprocess</span><span class="p">.</span><span class="k">call</span><span class="p">(</span>
+
+<span class="w">                    </span><span class="n">cls</span><span class="p">.</span><span class="n">_TEST_USABLE_COMMAND</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="p">.</span><span class="n">PIPE</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="p">.</span><span class="n">PIPE</span><span class="p">,</span>
+
+<span class="w">                </span><span class="p">)</span>
+
+<span class="w">                </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">            </span><span class="p">)</span>
+
+<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">OSError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">e</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">errno</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="n">errno</span><span class="p">.</span><span class="n">ENOENT</span><span class="p">,</span><span class="w"> </span><span class="n">errno</span><span class="p">.</span><span class="n">EACCES</span><span class="p">,</span><span class="w"> </span><span class="n">errno</span><span class="p">.</span><span class="n">ENOTDIR</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">False</span>
+
+<span class="w">            </span><span class="n">raise</span>
+</code></pre></div>
+
+</details>
+<hr />
+<h4 id="descendants">Descendants</h4>
+<ul>
+<li>bumpversion.vcs.Git</li>
+<li>bumpversion.vcs.Mercurial</li>
+</ul>
+<h4 id="static-methods">Static methods</h4>
+<h4 id="commit">commit</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">commit</span><span class="p">(</span>
+    <span class="n">message</span><span class="p">,</span>
+    <span class="n">context</span><span class="p">,</span>
+    <span class="n">extra_args</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="k">commit</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">extra_args</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">extra_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extra_args</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">[]</span>
+
+<span class="w">        </span><span class="k">with</span><span class="w"> </span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="ss">&quot;wb&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">delete</span><span class="o">=</span><span class="k">False</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">f</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">f</span><span class="p">.</span><span class="k">write</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="ss">&quot;utf-8&quot;</span><span class="p">))</span>
+
+<span class="w">        </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">env</span><span class="o">[</span><span class="n">&quot;HGENCODING&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;utf-8&quot;</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;current_version&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;new_version&quot;</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">env</span><span class="o">[</span><span class="n">str(&quot;BUMPVERSION_&quot; + key.upper())</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">str</span><span class="p">(</span><span class="n">context</span><span class="o">[</span><span class="n">key</span><span class="o">]</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">try</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">cls</span><span class="p">.</span><span class="n">_COMMIT_COMMAND</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">[</span><span class="n">f.name</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">extra_args</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">)</span>
+
+<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">subprocess</span><span class="p">.</span><span class="n">CalledProcessError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">exc</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">err_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Failed to run {}: return code {}, output: {}&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">exc</span><span class="p">.</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">exc</span><span class="p">.</span><span class="n">returncode</span><span class="p">,</span><span class="w"> </span><span class="n">exc</span><span class="p">.</span><span class="k">output</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="k">exception</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">exc</span>
+
+<span class="w">        </span><span class="nl">finally</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">os</span><span class="p">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h4 id="is_usable">is_usable</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">is_usable</span><span class="p">(</span>
+
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">is_usable</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">try</span><span class="err">:</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+
+<span class="w">                </span><span class="n">subprocess</span><span class="p">.</span><span class="k">call</span><span class="p">(</span>
+
+<span class="w">                    </span><span class="n">cls</span><span class="p">.</span><span class="n">_TEST_USABLE_COMMAND</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="p">.</span><span class="n">PIPE</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="p">.</span><span class="n">PIPE</span><span class="p">,</span>
+
+<span class="w">                </span><span class="p">)</span>
+
+<span class="w">                </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">            </span><span class="p">)</span>
+
+<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">OSError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">e</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">errno</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="n">errno</span><span class="p">.</span><span class="n">ENOENT</span><span class="p">,</span><span class="w"> </span><span class="n">errno</span><span class="p">.</span><span class="n">EACCES</span><span class="p">,</span><span class="w"> </span><span class="n">errno</span><span class="p">.</span><span class="n">ENOTDIR</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">False</span>
+
+<span class="w">            </span><span class="n">raise</span>
+</code></pre></div>
+
+</details>
+<h3 id="git">Git</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Git</span><span class="p">(</span>
+    <span class="o">/</span><span class="p">,</span>
+    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">Git</span><span class="p">(</span><span class="n">BaseVCS</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">    </span><span class="n">_TEST_USABLE_COMMAND</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;git&quot;, &quot;rev-parse&quot;, &quot;--git-dir&quot;</span><span class="o">]</span>
+
+<span class="w">    </span><span class="n">_COMMIT_COMMAND</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;git&quot;, &quot;commit&quot;, &quot;-F&quot;</span><span class="o">]</span>
+
+<span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">assert_nondirty</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>
+
+<span class="n">            line.strip()</span>
+
+<span class="n">            for line in subprocess.check_output([&quot;git&quot;, &quot;status&quot;, &quot;--porcelain&quot;</span><span class="o">]</span><span class="p">).</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">().</span><span class="n">startswith</span><span class="p">(</span><span class="n">b</span><span class="ss">&quot;??&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="err">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nl">lines</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">WorkingDirectoryIsDirtyException</span><span class="p">(</span>
+
+<span class="w">                </span><span class="ss">&quot;Git working directory is not clean:\n{}&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">b</span><span class="ss">&quot;\n&quot;</span><span class="p">.</span><span class="k">join</span><span class="p">(</span><span class="n">lines</span><span class="p">).</span><span class="n">decode</span><span class="p">())</span>
+
+<span class="w">            </span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">latest_tag_info</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">try</span><span class="err">:</span>
+
+<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">git</span><span class="o">-</span><span class="k">describe</span><span class="w"> </span><span class="n">doesn</span><span class="err">&#39;</span><span class="n">t</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">git</span><span class="o">-</span><span class="k">index</span><span class="p">,</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">do</span><span class="w"> </span><span class="n">that</span>
+
+<span class="w">            </span><span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span><span class="o">[</span><span class="n">&quot;git&quot;, &quot;update-index&quot;, &quot;--refresh&quot;</span><span class="o">]</span><span class="p">)</span>
+
+<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">latest</span><span class="w"> </span><span class="n">tag</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">git</span>
+
+<span class="w">            </span><span class="n">describe_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+
+<span class="w">                </span><span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span>
+
+<span class="w">                    </span><span class="o">[</span>
+
+<span class="n">                        &quot;git&quot;,</span>
+
+<span class="n">                        &quot;describe&quot;,</span>
+
+<span class="n">                        &quot;--dirty&quot;,</span>
+
+<span class="n">                        &quot;--tags&quot;,</span>
+
+<span class="n">                        &quot;--long&quot;,</span>
+
+<span class="n">                        &quot;--abbrev=40&quot;,</span>
+
+<span class="n">                        &quot;--match=v*&quot;,</span>
+
+<span class="n">                    </span><span class="o">]</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="p">.</span><span class="n">STDOUT</span><span class="p">,</span>
+
+<span class="w">                </span><span class="p">)</span>
+
+<span class="w">                </span><span class="p">.</span><span class="n">decode</span><span class="p">()</span>
+
+<span class="w">                </span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="ss">&quot;-&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="p">)</span>
+
+<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">subprocess</span><span class="p">.</span><span class="nl">CalledProcessError</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Error when running git describe&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="err">{}</span>
+
+<span class="w">        </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">describe_out</span><span class="o">[</span><span class="n">-1</span><span class="o">]</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">&quot;dirty&quot;</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">info</span><span class="o">[</span><span class="n">&quot;dirty&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span>
+
+<span class="w">            </span><span class="n">describe_out</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">info</span><span class="o">[</span><span class="n">&quot;commit_sha&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">describe_out</span><span class="p">.</span><span class="n">pop</span><span class="p">().</span><span class="n">lstrip</span><span class="p">(</span><span class="ss">&quot;g&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">info</span><span class="o">[</span><span class="n">&quot;distance_to_latest_tag&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">int</span><span class="p">(</span><span class="n">describe_out</span><span class="p">.</span><span class="n">pop</span><span class="p">())</span>
+
+<span class="w">        </span><span class="n">info</span><span class="o">[</span><span class="n">&quot;current_version&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;-&quot;</span><span class="p">.</span><span class="k">join</span><span class="p">(</span><span class="n">describe_out</span><span class="p">).</span><span class="n">lstrip</span><span class="p">(</span><span class="ss">&quot;v&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">info</span>
+
+<span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_path</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span><span class="w"> </span><span class="k">path</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span><span class="o">[</span><span class="n">&quot;git&quot;, &quot;add&quot;, &quot;--update&quot;, path</span><span class="o">]</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">tag</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span><span class="w"> </span><span class="nf">sign</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Create a tag of the new_version in VCS.</span>
+
+<span class="ss">        If only name is given, bumpversion uses a lightweight tag.</span>
+
+<span class="ss">        Otherwise, it utilizes an annotated tag.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;git&quot;, &quot;tag&quot;, name</span><span class="o">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nf">sign</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">command</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;--sign&quot;</span><span class="o">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nl">message</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">command</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;--message&quot;, message</span><span class="o">]</span>
+
+<span class="w">        </span><span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<hr />
+<h4 id="ancestors-in-mro">Ancestors (in MRO)</h4>
+<ul>
+<li>bumpversion.vcs.BaseVCS</li>
+</ul>
+<h4 id="static-methods_1">Static methods</h4>
+<h4 id="add_path">add_path</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">add_path</span><span class="p">(</span>
+    <span class="n">path</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_path</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span><span class="w"> </span><span class="k">path</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span><span class="o">[</span><span class="n">&quot;git&quot;, &quot;add&quot;, &quot;--update&quot;, path</span><span class="o">]</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h4 id="assert_nondirty">assert_nondirty</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">assert_nondirty</span><span class="p">(</span>
+
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">assert_nondirty</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>
+
+<span class="n">            line.strip()</span>
+
+<span class="n">            for line in subprocess.check_output([&quot;git&quot;, &quot;status&quot;, &quot;--porcelain&quot;</span><span class="o">]</span><span class="p">).</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">().</span><span class="n">startswith</span><span class="p">(</span><span class="n">b</span><span class="ss">&quot;??&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="err">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nl">lines</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">WorkingDirectoryIsDirtyException</span><span class="p">(</span>
+
+<span class="w">                </span><span class="ss">&quot;Git working directory is not clean:\n{}&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">b</span><span class="ss">&quot;\n&quot;</span><span class="p">.</span><span class="k">join</span><span class="p">(</span><span class="n">lines</span><span class="p">).</span><span class="n">decode</span><span class="p">())</span>
+
+<span class="w">            </span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h4 id="commit_1">commit</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">commit</span><span class="p">(</span>
+    <span class="n">message</span><span class="p">,</span>
+    <span class="n">context</span><span class="p">,</span>
+    <span class="n">extra_args</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="k">commit</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">extra_args</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">extra_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extra_args</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">[]</span>
+
+<span class="w">        </span><span class="k">with</span><span class="w"> </span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="ss">&quot;wb&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">delete</span><span class="o">=</span><span class="k">False</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">f</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">f</span><span class="p">.</span><span class="k">write</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="ss">&quot;utf-8&quot;</span><span class="p">))</span>
+
+<span class="w">        </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">env</span><span class="o">[</span><span class="n">&quot;HGENCODING&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;utf-8&quot;</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;current_version&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;new_version&quot;</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">env</span><span class="o">[</span><span class="n">str(&quot;BUMPVERSION_&quot; + key.upper())</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">str</span><span class="p">(</span><span class="n">context</span><span class="o">[</span><span class="n">key</span><span class="o">]</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">try</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">cls</span><span class="p">.</span><span class="n">_COMMIT_COMMAND</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">[</span><span class="n">f.name</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">extra_args</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">)</span>
+
+<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">subprocess</span><span class="p">.</span><span class="n">CalledProcessError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">exc</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">err_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Failed to run {}: return code {}, output: {}&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">exc</span><span class="p">.</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">exc</span><span class="p">.</span><span class="n">returncode</span><span class="p">,</span><span class="w"> </span><span class="n">exc</span><span class="p">.</span><span class="k">output</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="k">exception</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">exc</span>
+
+<span class="w">        </span><span class="nl">finally</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">os</span><span class="p">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h4 id="is_usable_1">is_usable</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">is_usable</span><span class="p">(</span>
+
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">is_usable</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">try</span><span class="err">:</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+
+<span class="w">                </span><span class="n">subprocess</span><span class="p">.</span><span class="k">call</span><span class="p">(</span>
+
+<span class="w">                    </span><span class="n">cls</span><span class="p">.</span><span class="n">_TEST_USABLE_COMMAND</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="p">.</span><span class="n">PIPE</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="p">.</span><span class="n">PIPE</span><span class="p">,</span>
+
+<span class="w">                </span><span class="p">)</span>
+
+<span class="w">                </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">            </span><span class="p">)</span>
+
+<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">OSError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">e</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">errno</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="n">errno</span><span class="p">.</span><span class="n">ENOENT</span><span class="p">,</span><span class="w"> </span><span class="n">errno</span><span class="p">.</span><span class="n">EACCES</span><span class="p">,</span><span class="w"> </span><span class="n">errno</span><span class="p">.</span><span class="n">ENOTDIR</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">False</span>
+
+<span class="w">            </span><span class="n">raise</span>
+</code></pre></div>
+
+</details>
+<h4 id="latest_tag_info">latest_tag_info</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">latest_tag_info</span><span class="p">(</span>
+
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">latest_tag_info</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">try</span><span class="err">:</span>
+
+<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">git</span><span class="o">-</span><span class="k">describe</span><span class="w"> </span><span class="n">doesn</span><span class="err">&#39;</span><span class="n">t</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">git</span><span class="o">-</span><span class="k">index</span><span class="p">,</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">do</span><span class="w"> </span><span class="n">that</span>
+
+<span class="w">            </span><span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span><span class="o">[</span><span class="n">&quot;git&quot;, &quot;update-index&quot;, &quot;--refresh&quot;</span><span class="o">]</span><span class="p">)</span>
+
+<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">latest</span><span class="w"> </span><span class="n">tag</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">git</span>
+
+<span class="w">            </span><span class="n">describe_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+
+<span class="w">                </span><span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span>
+
+<span class="w">                    </span><span class="o">[</span>
+
+<span class="n">                        &quot;git&quot;,</span>
+
+<span class="n">                        &quot;describe&quot;,</span>
+
+<span class="n">                        &quot;--dirty&quot;,</span>
+
+<span class="n">                        &quot;--tags&quot;,</span>
+
+<span class="n">                        &quot;--long&quot;,</span>
+
+<span class="n">                        &quot;--abbrev=40&quot;,</span>
+
+<span class="n">                        &quot;--match=v*&quot;,</span>
+
+<span class="n">                    </span><span class="o">]</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="p">.</span><span class="n">STDOUT</span><span class="p">,</span>
+
+<span class="w">                </span><span class="p">)</span>
+
+<span class="w">                </span><span class="p">.</span><span class="n">decode</span><span class="p">()</span>
+
+<span class="w">                </span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="ss">&quot;-&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="p">)</span>
+
+<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">subprocess</span><span class="p">.</span><span class="nl">CalledProcessError</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Error when running git describe&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="err">{}</span>
+
+<span class="w">        </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">describe_out</span><span class="o">[</span><span class="n">-1</span><span class="o">]</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">&quot;dirty&quot;</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">info</span><span class="o">[</span><span class="n">&quot;dirty&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span>
+
+<span class="w">            </span><span class="n">describe_out</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">info</span><span class="o">[</span><span class="n">&quot;commit_sha&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">describe_out</span><span class="p">.</span><span class="n">pop</span><span class="p">().</span><span class="n">lstrip</span><span class="p">(</span><span class="ss">&quot;g&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">info</span><span class="o">[</span><span class="n">&quot;distance_to_latest_tag&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">int</span><span class="p">(</span><span class="n">describe_out</span><span class="p">.</span><span class="n">pop</span><span class="p">())</span>
+
+<span class="w">        </span><span class="n">info</span><span class="o">[</span><span class="n">&quot;current_version&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;-&quot;</span><span class="p">.</span><span class="k">join</span><span class="p">(</span><span class="n">describe_out</span><span class="p">).</span><span class="n">lstrip</span><span class="p">(</span><span class="ss">&quot;v&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">info</span>
+</code></pre></div>
+
+</details>
+<h4 id="tag">tag</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">tag</span><span class="p">(</span>
+    <span class="n">sign</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">,</span>
+    <span class="n">message</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Create a tag of the new_version in VCS.</p>
+<p>If only name is given, bumpversion uses a lightweight tag.
+Otherwise, it utilizes an annotated tag.</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">tag</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span><span class="w"> </span><span class="nf">sign</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Create a tag of the new_version in VCS.</span>
+
+<span class="ss">        If only name is given, bumpversion uses a lightweight tag.</span>
+
+<span class="ss">        Otherwise, it utilizes an annotated tag.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;git&quot;, &quot;tag&quot;, name</span><span class="o">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nf">sign</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">command</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;--sign&quot;</span><span class="o">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nl">message</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">command</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;--message&quot;, message</span><span class="o">]</span>
+
+<span class="w">        </span><span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h3 id="mercurial">Mercurial</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Mercurial</span><span class="p">(</span>
+    <span class="o">/</span><span class="p">,</span>
+    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">Mercurial</span><span class="p">(</span><span class="n">BaseVCS</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">    </span><span class="n">_TEST_USABLE_COMMAND</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;hg&quot;, &quot;root&quot;</span><span class="o">]</span>
+
+<span class="w">    </span><span class="n">_COMMIT_COMMAND</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;hg&quot;, &quot;commit&quot;, &quot;--logfile&quot;</span><span class="o">]</span>
+
+<span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">latest_tag_info</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="err">{}</span>
+
+<span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">assert_nondirty</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>
+
+<span class="n">            line.strip()</span>
+
+<span class="n">            for line in subprocess.check_output([&quot;hg&quot;, &quot;status&quot;, &quot;-mard&quot;</span><span class="o">]</span><span class="p">).</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">().</span><span class="n">startswith</span><span class="p">(</span><span class="n">b</span><span class="ss">&quot;??&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="err">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nl">lines</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">WorkingDirectoryIsDirtyException</span><span class="p">(</span>
+
+<span class="w">                </span><span class="ss">&quot;Mercurial working directory is not clean:\n{}&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">b</span><span class="ss">&quot;\n&quot;</span><span class="p">.</span><span class="k">join</span><span class="p">(</span><span class="n">lines</span><span class="p">).</span><span class="n">decode</span><span class="p">())</span>
+
+<span class="w">            </span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_path</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span><span class="w"> </span><span class="k">path</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">pass</span>
+
+<span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">tag</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span><span class="w"> </span><span class="nf">sign</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;hg&quot;, &quot;tag&quot;, name</span><span class="o">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nf">sign</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">MercurialDoesNotSupportSignedTagsException</span><span class="p">(</span><span class="ss">&quot;Mercurial does not support signed tags.&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nl">message</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">command</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;--message&quot;, message</span><span class="o">]</span>
+
+<span class="w">        </span><span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<hr />
+<h4 id="ancestors-in-mro_1">Ancestors (in MRO)</h4>
+<ul>
+<li>bumpversion.vcs.BaseVCS</li>
+</ul>
+<h4 id="static-methods_2">Static methods</h4>
+<h4 id="add_path_1">add_path</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">add_path</span><span class="p">(</span>
+    <span class="n">path</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_path</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span><span class="w"> </span><span class="k">path</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">pass</span>
+</code></pre></div>
+
+</details>
+<h4 id="assert_nondirty_1">assert_nondirty</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">assert_nondirty</span><span class="p">(</span>
+
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">assert_nondirty</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>
+
+<span class="n">            line.strip()</span>
+
+<span class="n">            for line in subprocess.check_output([&quot;hg&quot;, &quot;status&quot;, &quot;-mard&quot;</span><span class="o">]</span><span class="p">).</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">().</span><span class="n">startswith</span><span class="p">(</span><span class="n">b</span><span class="ss">&quot;??&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="err">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nl">lines</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">WorkingDirectoryIsDirtyException</span><span class="p">(</span>
+
+<span class="w">                </span><span class="ss">&quot;Mercurial working directory is not clean:\n{}&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">b</span><span class="ss">&quot;\n&quot;</span><span class="p">.</span><span class="k">join</span><span class="p">(</span><span class="n">lines</span><span class="p">).</span><span class="n">decode</span><span class="p">())</span>
+
+<span class="w">            </span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h4 id="commit_2">commit</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">commit</span><span class="p">(</span>
+    <span class="n">message</span><span class="p">,</span>
+    <span class="n">context</span><span class="p">,</span>
+    <span class="n">extra_args</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="k">commit</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">extra_args</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">extra_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extra_args</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">[]</span>
+
+<span class="w">        </span><span class="k">with</span><span class="w"> </span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="ss">&quot;wb&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">delete</span><span class="o">=</span><span class="k">False</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">f</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">f</span><span class="p">.</span><span class="k">write</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="ss">&quot;utf-8&quot;</span><span class="p">))</span>
+
+<span class="w">        </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">env</span><span class="o">[</span><span class="n">&quot;HGENCODING&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;utf-8&quot;</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;current_version&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;new_version&quot;</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">env</span><span class="o">[</span><span class="n">str(&quot;BUMPVERSION_&quot; + key.upper())</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">str</span><span class="p">(</span><span class="n">context</span><span class="o">[</span><span class="n">key</span><span class="o">]</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">try</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">cls</span><span class="p">.</span><span class="n">_COMMIT_COMMAND</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">[</span><span class="n">f.name</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">extra_args</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">)</span>
+
+<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">subprocess</span><span class="p">.</span><span class="n">CalledProcessError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">exc</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">err_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Failed to run {}: return code {}, output: {}&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">exc</span><span class="p">.</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">exc</span><span class="p">.</span><span class="n">returncode</span><span class="p">,</span><span class="w"> </span><span class="n">exc</span><span class="p">.</span><span class="k">output</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="k">exception</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">exc</span>
+
+<span class="w">        </span><span class="nl">finally</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">os</span><span class="p">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h4 id="is_usable_2">is_usable</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">is_usable</span><span class="p">(</span>
+
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">is_usable</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">try</span><span class="err">:</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+
+<span class="w">                </span><span class="n">subprocess</span><span class="p">.</span><span class="k">call</span><span class="p">(</span>
+
+<span class="w">                    </span><span class="n">cls</span><span class="p">.</span><span class="n">_TEST_USABLE_COMMAND</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="p">.</span><span class="n">PIPE</span><span class="p">,</span>
+
+<span class="w">                    </span><span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="p">.</span><span class="n">PIPE</span><span class="p">,</span>
+
+<span class="w">                </span><span class="p">)</span>
+
+<span class="w">                </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">            </span><span class="p">)</span>
+
+<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">OSError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">e</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">errno</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="n">errno</span><span class="p">.</span><span class="n">ENOENT</span><span class="p">,</span><span class="w"> </span><span class="n">errno</span><span class="p">.</span><span class="n">EACCES</span><span class="p">,</span><span class="w"> </span><span class="n">errno</span><span class="p">.</span><span class="n">ENOTDIR</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">False</span>
+
+<span class="w">            </span><span class="n">raise</span>
+</code></pre></div>
+
+</details>
+<h4 id="latest_tag_info_1">latest_tag_info</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">latest_tag_info</span><span class="p">(</span>
+
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">latest_tag_info</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="err">{}</span>
+</code></pre></div>
+
+</details>
+<h4 id="tag_1">tag</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">tag</span><span class="p">(</span>
+    <span class="n">sign</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">,</span>
+    <span class="n">message</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@classmethod</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">tag</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span><span class="w"> </span><span class="nf">sign</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;hg&quot;, &quot;tag&quot;, name</span><span class="o">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nf">sign</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">MercurialDoesNotSupportSignedTagsException</span><span class="p">(</span><span class="ss">&quot;Mercurial does not support signed tags.&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nl">message</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">command</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;--message&quot;, message</span><span class="o">]</span>
+
+<span class="w">        </span><span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../utils/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Utils" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Utils
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../version_part/" class="md-footer__link md-footer__link--next" aria-label="Next: Version Part" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Version Part
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      (c) 2022 Las Vegas Sands
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["search.suggest", "search.highlight", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+        <script src="/docs/js/termynal.js"></script>
+      
+        <script src="/docs/js/custom.js"></script>
+      
+    
+  </body>
+</html>
