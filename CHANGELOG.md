@@ -1,5 +1,6 @@
 **unreleased**
 **v1.0.2-beta3**
+**v1.0.2-beta3**
 **v1.0.2-beta2**
 **v1.0.2-beta1**
 **v1.0.2-dev**
