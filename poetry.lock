@@ -4211,10 +4211,7 @@ type = "legacy"
 url = "https://artifacts-433714148419.d.codeartifact.us-east-2.amazonaws.com/pypi/pypi/simple"
 reference = "codeartifact"
 
-[extras]
-test = []
-
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<3.13.0"
-content-hash = "6b83f5d2c580b9757fedf7f15420d84313cbf401a652526a8e11f143410aa38e"
+content-hash = "57ef38b2d64798110ae8a75dbe72536cf95122c0fec7d144f1727c960ca9eda8"

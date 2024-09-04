@@ -88,9 +88,9 @@ mkdocs-markdownextradata-plugin = ">=0.1.7,<0.3.0"
 #poetry-plugin-bump2version = "~0.8.2"
 
 testfixtures = {version = ">=1.2.0"}
-
-[tool.poetry.extras]
-test = ["testfixtures"]
+#
+#[tool.poetry.extras]
+#test = ["testfixtures"]
 
 [tool.poetry_bump2version.options]
 list = true
