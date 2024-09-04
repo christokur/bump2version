@@ -40,8 +40,11 @@ Homepage = "https://github.com/christokur/bump2version"
 [[tool.poetry.source]]
 name = "codeartifact"
 url = "https://artifacts-433714148419.d.codeartifact.us-east-2.amazonaws.com/pypi/pypi/simple/"
-secondary = false
-default = true
+#priority = "primary"
+
+[[tool.poetry.source]]
+name = "pypi"
+priority = "supplemental"
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.13.0"
