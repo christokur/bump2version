@@ -6,7 +6,7 @@ requires = [
 
 [tool.poetry]
 name = "bump2version"
-version = "1.0.2-beta4"
+version = "1.0.2-beta5"
 description = "Version-bump your software with a single command!"
 authors = ["Christian Verkerk <christianverkerk@ymail.com>"]
 readme = "README.md"
@@ -21,6 +21,7 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Utilities",
     "Typing :: Typed",
 ]
@@ -43,18 +44,18 @@ secondary = false
 default = true
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.12.0"
+python = ">=3.8,<3.13.0"
 
 [tool.poetry.dev-dependencies]
-pip = "~22.3"
-poetry = "~1.3.2"
+pip = "~24.2"
+poetry = "~1.8.3"
 tox = "~3.26.0"
 tox-pyenv = "~1.1.0"
-cachecontrol = "^0.12.11"
+cachecontrol = "~0.14.0"
 lockfile = "0.12.2"
-virtualenv = "~20.10.0"
-black = "~22.10.0"
-isort = "~5.10.1"
+virtualenv = ">=20.23.0,<21.0.0"
+black = { version = '~24.2.0', extras = ['d']}
+isort = { version = '~5.13.2' }
 pydocstyle = { version = "~6.1.1", extras = ["toml"] }
 pytest = "~7.2.0"
 pytest-cov = "~4.0.0"
