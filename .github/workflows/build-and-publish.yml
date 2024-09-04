@@ -121,7 +121,7 @@ jobs:
           poetry run poe test-cov
 
       - name: Poetry Build and Publish
-        if: matrix.python-version == '3.9' && matrix.os == 'ubuntu-latest'
+        if: matrix.python-version == '3.11' && matrix.os == 'ubuntu-latest'
         run: |
           #poetry env use ${{ matrix.python-version }}
           poetry version
