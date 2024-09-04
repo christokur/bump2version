@@ -172,7 +172,7 @@ PYTHONWARNINGS = "ignore::Warning:setuptools.command.install"
 
 [tool.poe.tasks]
 pyproject-fmt = { shell = "pyproject-fmt pyproject.toml" }
-check-lock = { shell = "poetry lock --check | grep -v 'not consistent'", help = "poetry lock workaround for https://github.com/nat-n/poethepoet/issues/91" }
+check-lock = { shell = "poetry check --lock | grep -v 'not consistent'", help = "poetry lock workaround for https://github.com/nat-n/poethepoet/issues/91" }
 set-lock = { shell = "poetry lock --no-update", help = "Locks the project dependencies in poetry.lock" }
 pc-install = { shell = "pre-commit install; gitlint install-hook", help = "Set up pre-commit hooks"}
 pc-autoupdate = { shell = "pre-commit autoupdate", help = "Auto update pre-commit hooks"}

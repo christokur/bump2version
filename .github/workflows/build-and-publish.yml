@@ -107,7 +107,7 @@ jobs:
           set | egrep -e '^(POETRY|PYTHON|AWS)'; poetry config --list; set | grep POETRY || true
 
       - name: Check poetry.lock
-        run: poetry lock --check
+        run: poetry check --lock
 
       - name: Install dependencies
         run: |
